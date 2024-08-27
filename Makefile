@@ -25,6 +25,7 @@ OBJ_FILES := $(patsubst src/%.cpp,$(OBJ_DIR)/%.o,$(CPP_FILES))
 	-Iinclude/Gerenciadores \
 	-Iinclude/IDs \
 	-Iinclude/Listas \
+	-Iinclude/Estados \
 	$< -o $@
 
 
