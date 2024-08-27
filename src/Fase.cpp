@@ -14,20 +14,13 @@ using namespace Jogadores;
 using namespace Obstaculos;
 
 
-Fase::Fase(const IDs::ID id) :Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pEventos(pEventos->getGerenciadorEventos()), fundo(Vector2f(800.0, 600.f),pGG->carregarTextura("./Assets/Fundo1.jpg"))//, numAleatorio(0)
+Fase::Fase(const IDs::ID id) :Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(800.0, 600.f),pGG->carregarTextura("./Assets/Fundo1.jpg"))//, numAleatorio(0)
 {
-	if (!pEventos) {
-		std::cout << "Nao foi possivel criar um gerenciador de eventos" << std::endl;
-		exit(1);
-	}
-	
+
 }
 
 Fase::~Fase()
 {
-	if (pEventos) 
-		pEventos = nullptr;
-	
 	listaInimigos.limparLista();
 	listaObstaculos.limparLista();
 	listaJogadores.limparLista();
