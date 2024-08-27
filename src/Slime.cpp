@@ -9,7 +9,7 @@ using namespace Obstaculos;
 using namespace sf;
 
 Slime::Slime(const sf::Vector2f pos, const sf::Vector2f tam)
-    : Obstaculo(pos, tam, IDs::ID::slime), pegajosidadePulo(-0.13f), pegajosidadeMovimento(0.5f), jogadorColidindo(false)
+    : Obstaculo(pos, tam, IDs::ID::slime), pegajosidadeMovimento(0.4f)
 {
     corpo = sf::RectangleShape(tam);
     corpo.setPosition(pos);
@@ -29,16 +29,8 @@ void Slime::colisao(Entidade* outra, sf::Vector2f ds)
 {
     if (outra->getId() == IDs::ID::jogador)
     {
-        if (!jogadorColidindo)
-        {
-            atrapalhar(static_cast<Personagens::Jogadores::Jogador*>(outra));
-            jogadorColidindo = true;
-        }
-    }
-    else if (jogadorColidindo)
-    {
-        restaurarEfeito(static_cast<Personagens::Jogadores::Jogador*>(outra));
-        jogadorColidindo = false;
+        atrapalhar(static_cast<Personagens::Jogadores::Jogador*>(outra));
+
     }
 }
 
@@ -47,15 +39,5 @@ void Slime::atrapalhar(Personagens::Jogadores::Jogador* pJogador)
     if (pJogador)
     {
         pJogador->setVelocidadeMovimento(pJogador->getVelocidadeMovimento() * pegajosidadeMovimento);
-        //pJogador->setVelocidadePulo(pJogador->getVelocidadePulo() * pegajosidadePulo);
-    }
-}
-
-void Slime::restaurarEfeito(Personagens::Jogadores::Jogador* pJogador)
-{
-    if (pJogador)
-    {
-        pJogador->setVelocidadeMovimento(VELOCIDADE_JOGADOR_X);
-       // pJogador->setVelocidadePulo(TAMANHO_PULO);
     }
 }
