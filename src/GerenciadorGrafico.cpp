@@ -4,37 +4,38 @@ using namespace sf;
 using namespace Jogo;
 using namespace Gerenciadores;
 
-GerenciadorGrafico* GerenciadorGrafico::pGG(nullptr);
+GerenciadorGrafico *GerenciadorGrafico::pGG(nullptr);
 float GerenciadorGrafico::tempo(0.0f);
 
-GerenciadorGrafico::GerenciadorGrafico() :
-	janela(new RenderWindow(VideoMode(800.0f, 600.0f), "Jogo++")), relogio()
+GerenciadorGrafico::GerenciadorGrafico() : janela(new RenderWindow(VideoMode(800.0f, 600.0f), "Jogo++")), relogio()
 {
-	if (!janela) {
+	if (!janela)
+	{
 		std::cout << "Erro ao criar a janela" << std::endl;
 		exit(1);
 	}
 	janela->setFramerateLimit(0);
 }
 
-
 GerenciadorGrafico::~GerenciadorGrafico()
 {
-	if (janela) {
+	if (janela)
+	{
 		delete janela;
 		janela = nullptr;
 	}
 }
 
-GerenciadorGrafico* GerenciadorGrafico::getGrafico()
+GerenciadorGrafico *GerenciadorGrafico::getGrafico()
 {
-	if (!pGG) {
+	if (!pGG)
+	{
 		pGG = new GerenciadorGrafico();
 	}
 	return pGG;
 }
 
-RenderWindow* GerenciadorGrafico::getJanela()
+RenderWindow *GerenciadorGrafico::getJanela()
 {
 	return janela;
 }
@@ -49,6 +50,11 @@ void GerenciadorGrafico::desenhaElementos(RectangleShape corpo)
 	janela->draw(corpo);
 }
 
+void GerenciadorGrafico::desenhaElementos(Text texto)
+{
+	janela->draw(texto);
+}
+
 void GerenciadorGrafico::mostraElementos()
 {
 	janela->display();
@@ -61,32 +67,46 @@ void GerenciadorGrafico::fecharJanela()
 
 const bool GerenciadorGrafico::verificaJanelaAberta()
 {
-	if (janela->isOpen()) {
+	if (janela->isOpen())
+	{
 		return true;
 	}
-	else {
+	else
+	{
 		return false;
 	}
 }
 
-Texture GerenciadorGrafico::carregarTextura(const char* caminhoTextura)
+Texture GerenciadorGrafico::carregarTextura(const char *caminhoTextura)
 {
 	Texture textura;
 
-	try {
-		if (!textura.loadFromFile(caminhoTextura)) {
-			throw std::runtime_error("Não foi possível carregar a textura");
+	try
+	{
+		if (!textura.loadFromFile(caminhoTextura))
+		{
+			throw std::runtime_error("Nï¿½o foi possï¿½vel carregar a textura");
 		}
 	}
-	catch (const std::exception& e) {
+	catch (const std::exception &e)
+	{
 		std::cerr << e.what() << std::endl;
-		// Tratamento adicional pode ser feito aqui, se necessário
-		// Por exemplo, retornar uma textura padrão ou continuar a execução
+		// Tratamento adicional pode ser feito aqui, se necessï¿½rio
+		// Por exemplo, retornar uma textura padrï¿½o ou continuar a execuï¿½ï¿½o
 	}
 
 	return textura;
 }
 
+Font GerenciadorGrafico::carregarFonte(const char *caminhoFonte)
+{
+	sf::Font fonte;
+	if (!fonte.loadFromFile(caminhoFonte))
+	{
+		throw("ERROR::Jungle::Gerenciador::GerenciadorGrafico::nao foi possivel encontrar o caminho da fonte");
+	}
+	return fonte;
+}
 void GerenciadorGrafico::resetarRelogio()
 {
 	tempo = relogio.getElapsedTime().asSeconds();
