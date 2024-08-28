@@ -7,7 +7,7 @@ using namespace Gerenciadores;
 GerenciadorGrafico *GerenciadorGrafico::pGG(nullptr);
 float GerenciadorGrafico::tempo(0.0f);
 
-GerenciadorGrafico::GerenciadorGrafico() : janela(new RenderWindow(VideoMode(800.0f, 600.0f), "Jogo++")), relogio()
+GerenciadorGrafico::GerenciadorGrafico() : janela(new RenderWindow(VideoMode(1280.0f, 720.0f), "Aventura++")), relogio()
 {
 	if (!janela)
 	{
@@ -116,4 +116,9 @@ void GerenciadorGrafico::resetarRelogio()
 const float GerenciadorGrafico::getTempo() const
 {
 	return tempo;
+}
+
+const Vector2f GerenciadorGrafico::getTamJanela() const
+{
+    return (sf::Vector2f)janela->getSize();
 }

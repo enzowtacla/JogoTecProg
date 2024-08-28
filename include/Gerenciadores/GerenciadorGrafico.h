@@ -33,6 +33,7 @@ namespace Jogo
 			Font carregarFonte(const char* caminhoFonte);
 			void resetarRelogio();
 			const float getTempo() const;
+			const Vector2f getTamJanela() const;
 		};
 	}
 }
