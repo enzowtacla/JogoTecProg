@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Gerenciadores/GerenciadorColisao.h"
-#include "../Entidades/Personagens/Jogadores/Jogador.h"
+#include "../Gerenciadores/GerenciadorGrafico.h"
+#include "../Gerenciadores/GerenciadorInputs.h"
 
 namespace Jogo 
 {
@@ -11,18 +11,15 @@ namespace Jogo
 		{
 		private:
 			GerenciadorGrafico* pGG;
-			Entidades::Personagens::Jogadores::Jogador* pJogador;
-			Entidades::Personagens::Jogadores::Jogador* pJogador2;
+			GerenciadorInputs* pInputs;
+			RenderWindow* pJanela;
+
 			static GerenciadorEventos* pEventos;
 			GerenciadorEventos();
 
 		public:
 			~GerenciadorEventos();
 			static GerenciadorEventos* getGerenciadorEventos();
-			void setJogador(Entidades::Personagens::Jogadores::Jogador* pJogador);
-			void setJogador2(Entidades::Personagens::Jogadores::Jogador* pJogador2);
-			void verificaTeclaPressionada(const sf::Keyboard::Key tecla);
-			void verificaTeclaSolta(const sf::Keyboard::Key tecla);
 			void executar();
 		};
 	}

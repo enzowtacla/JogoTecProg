@@ -4,7 +4,7 @@
 #include "../Listas/ListaEntidade.h"
 #include "../Ente.h"
 #include "../Gerenciadores/GerenciadorColisao.h"
-#include "../Gerenciadores/GerenciadorEventos.h"
+#include "../oBSERVADORES/ObservadorJogador.h"
 #include "../Fundo/Fundo.h"
 
 
@@ -19,7 +19,7 @@ namespace Jogo
 			Listas::ListaEntidade listaObstaculos;
 			Listas::ListaEntidade listaJogadores;
 			Gerenciadores::GerenciadorColisao colisor;
-			Gerenciadores::GerenciadorEventos* pEventos;
+			Gerenciadores::GerenciadorInputs* pInputs;
 			Fundos::Fundo fundo;
 			//int numAleatorio;
 

@@ -6,9 +6,11 @@ using namespace Gerenciadores;
 GerenciadorEventos* GerenciadorEventos::pEventos(nullptr);
 
 GerenciadorEventos::GerenciadorEventos():
-	pGG(pGG->getGrafico()), pJogador(nullptr), pJogador2(nullptr)
+pGG(pGG->getGrafico()), pInputs(pInputs->getGerenciadorInputs()), pJanela(nullptr)
 {
-
+	if(pGG != nullptr){
+		pJanela = pGG->getJanela();
+	}
 }
 
 GerenciadorEventos::~GerenciadorEventos()
@@ -24,61 +26,17 @@ GerenciadorEventos* GerenciadorEventos::getGerenciadorEventos()
 	return pEventos;
 }
 
-void GerenciadorEventos::setJogador(Entidades::Personagens::Jogadores::Jogador* pJogador)
-{
-	this->pJogador = pJogador;
-}
-
-void GerenciadorEventos::setJogador2(Entidades::Personagens::Jogadores::Jogador* pJogador2)
-{
-	this->pJogador2 = pJogador2;
-}
-
-void GerenciadorEventos::verificaTeclaPressionada(const sf::Keyboard::Key tecla)
-{
-	if (tecla == sf::Keyboard::A) {
-		pJogador->andar(true);
-	}
-	else if (tecla == sf::Keyboard::D) {
-		pJogador->andar(false);
-	}
-	else if (tecla == sf::Keyboard::Left) {
-		pJogador2->andar(true);
-	}
-	else if (tecla == sf::Keyboard::Right) {
-		pJogador2->andar(false);
-	}
-	else if (tecla == sf::Keyboard::W) {
-		pJogador->pular();
-	}
-	else if (tecla == sf::Keyboard::Up) {
-		pJogador2->pular();
-	}
-}
-
-void GerenciadorEventos::verificaTeclaSolta(const sf::Keyboard::Key tecla)
-{
-	if (tecla == sf::Keyboard::A || tecla == sf::Keyboard::D)
-	{
-		pJogador->parar();
-	}
-	else if (tecla == sf::Keyboard::Left || tecla == sf::Keyboard::Right)
-	{
-		pJogador2->parar();
-	}
-}
-
 void GerenciadorEventos::executar()
 {
 	sf::Event evento;
 
-	if(pGG->getJanela()->pollEvent(evento))
+	if(pJanela->pollEvent(evento))
 	{
 		if (evento.type == sf::Event::KeyPressed) {
-			verificaTeclaPressionada(evento.key.code);
+			pInputs->tratarTeclaPressionada(evento.key.code);
 		}
 		else if (evento.type == sf::Event::KeyReleased) {
-			verificaTeclaSolta(evento.key.code);
+			pInputs->tratarTeclaSolta(evento.key.code);
 		}
 		else if (evento.type == sf::Event::Closed) {
 			pGG->fecharJanela();
