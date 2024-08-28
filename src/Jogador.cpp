@@ -110,7 +110,11 @@ void Jogador::setVelocidadeMovimento(float velocidade)
 void Jogador::knockBack(float dist)
 {
     velFinal.y = -sqrt(2.f * GRAVIDADE * (TAMANHO_PULO / 2));
-	velFinal.x = velFinal.x * -dist;
+
+    if (dist > 75)
+    {
+        velFinal.x = velFinal.x * -dist;
+    }
 }
 
 const bool Jogador::getVivo() const

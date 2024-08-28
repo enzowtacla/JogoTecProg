@@ -3,7 +3,7 @@
 #include "../Jogadores/Jogador.h"
 #define ALCANCE_X 200.0f
 #define ALCANCE_Y 200.0f
-#define EMPURRAO 150.0f
+#define EMPURRAO 75.0f
 #define CABECADA 0.05f
 
 namespace Jogo

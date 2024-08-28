@@ -113,7 +113,7 @@ void Fase::criarLava(const sf::Vector2f pos)
 
 
 	if (!lava1) {
-		std::cout << "Nao foi possivel criar o slime" << std::endl;
+		std::cout << "Nao foi possivel criar a lava" << std::endl;
 	}
 
 	listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(lava1));
@@ -168,7 +168,7 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 
 		case('L'):
 		{
-			criarEspinho(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+			//criarLava(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
 		}
 		break;
 	}

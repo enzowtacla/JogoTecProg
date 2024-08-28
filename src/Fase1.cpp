@@ -2,7 +2,7 @@
 #include "../include/Entidades/Personagens/Inimigos/Perseguidor.h"
 //#include "../include/Entidades/Personagens/Inimigos/Chefao.h"
 #include "../include/Entidades/Obstaculos/Slime.h"
-#include "../include/Entidades/Obstaculos/Lava.h"
+//#include "../include/Entidades/Obstaculos/Lava.h"
 
 using namespace Jogo;
 using namespace Fases;
@@ -110,18 +110,19 @@ void Fase1::criarSlime(const sf::Vector2f pos)
 {
 	if(qtdeSlimes < numSlimes)
 	{
-		//Entidades::Obstaculos::Slime* slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
-		Lava* lava = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
+		Entidades::Obstaculos::Slime* slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
+		//Lava* lava = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
 
-		if (!lava) {
+		if (!slime) {
 			std::cout << "Nao foi possivel criar o slime" << std::endl;
 		}
 
-		//listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(slime));
-		listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(lava));
+		listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(slime));
+		//listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(lava));
 		qtdeSlimes++;
 	}
-	else{
+	else
+	{
 		if(rand()%100 < 25){
 			Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
 

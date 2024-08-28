@@ -160,7 +160,7 @@ void Perseguidor::cabeciar (Personagem* pPersonagem)
 {
 	if(pPersonagem){
 		Personagens::Jogadores::Jogador* pJogador = static_cast<Personagens::Jogadores::Jogador*>(pPersonagem);
-		pJogador->tomarDano(forcaCabecada);
 		pJogador->knockBack(forcaEmpurrao);
+		pJogador->tomarDano(forcaCabecada);
 	}
 }
