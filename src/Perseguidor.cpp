@@ -53,25 +53,44 @@ void Perseguidor::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimi
 
 void Perseguidor::moveInimigo()
 {
-	sf::Vector2f posJogador1 = pJogador->getCorpo().getPosition();
-	sf::Vector2f posJogador2 = pJogador2->getCorpo().getPosition();
-	sf::Vector2f posInimigo = corpo.getPosition();
-	float dist1 = fabs(posJogador1.x - posInimigo.x);
-	float dist2 = fabs(posJogador2.x - posInimigo.x);
+	if (pJogador->getVivo() && pJogador2->getVivo())
+    {
+        sf::Vector2f posJogador1 = pJogador->getCorpo().getPosition();
+        sf::Vector2f posJogador2 = pJogador2->getCorpo().getPosition();
+        sf::Vector2f posInimigo = corpo.getPosition();
+        float dist1 = fabs(posJogador1.x - posInimigo.x);
+        float dist2 = fabs(posJogador2.x - posInimigo.x);
 
-	if (dist1 <= ALCANCE_X && dist1 <= ALCANCE_Y &&
-		(dist1 < dist2 || dist2 > ALCANCE_X || dist2 > ALCANCE_Y))
-	{
-		persegueJogador(posJogador1, posInimigo);
-	}
-	else if (dist2 <= ALCANCE_X && dist2 <= ALCANCE_Y)
-	{
-		persegueJogador(posJogador2, posInimigo);
-	}
-	else
-	{
-		atualizaMovimentoAleatorio();
-	}
+        if (dist1 <= ALCANCE_X && dist1 <= ALCANCE_Y &&
+            (dist1 < dist2 || dist2 > ALCANCE_X || dist2 > ALCANCE_Y))
+        {
+            persegueJogador(posJogador1, posInimigo);
+        }
+        else if (dist2 <= ALCANCE_X && dist2 <= ALCANCE_Y)
+        {
+            persegueJogador(posJogador2, posInimigo);
+        }
+        else
+        {
+            atualizaMovimentoAleatorio();
+        }
+    }
+    else if (pJogador->getVivo()) 
+    {
+        sf::Vector2f posJogador1 = pJogador->getCorpo().getPosition();
+        sf::Vector2f posInimigo = corpo.getPosition();
+        persegueJogador(posJogador1, posInimigo);
+    }
+    else if (pJogador2->getVivo()) 
+    {
+        sf::Vector2f posJogador2 = pJogador2->getCorpo().getPosition();
+        sf::Vector2f posInimigo = corpo.getPosition();
+        persegueJogador(posJogador2, posInimigo);
+    }
+    else
+    {
+        atualizaMovimentoAleatorio();
+    }
 }
 
 void Perseguidor::atualizarAnimacao()
@@ -92,10 +111,11 @@ void Perseguidor::colisao(Entidade *outra, sf::Vector2f ds)
 {
 	if (outra->getId() == IDs::ID::jogador)
 	{
-		colisaoPerseguidor(static_cast<Personagens::Personagem *>(outra), ds);
+		cabeciar(static_cast<Personagens::Personagem *>(outra));
 	}
 }
 
+/*
 void Perseguidor::colisaoPerseguidor(Personagem *pPersonagem, Vector2f ds)
 {
 	if (pPersonagem)
@@ -108,7 +128,7 @@ void Perseguidor::colisaoPerseguidor(Personagem *pPersonagem, Vector2f ds)
 		{ // houve colisao
 			if (ds.x > ds.y)
 			{
-				if (posOutro.x < pos.x)// colis�o em x
+				if (posOutro.x < pos.x)// colis o em x
 				{ 
 					aux->tomarDano(forcaCabecada);
 					posOutro.x -= forcaEmpurrao;
@@ -122,7 +142,7 @@ void Perseguidor::colisaoPerseguidor(Personagem *pPersonagem, Vector2f ds)
 			}
 			else
 			{
-				if (posOutro.y > pos.y)// colis�o em y
+				if (posOutro.y > pos.y)// colis o em y
 				{ 
 					aux->tomarDano(forcaCabecada);
 					posOutro.y += forcaEmpurrao;
@@ -132,5 +152,15 @@ void Perseguidor::colisaoPerseguidor(Personagem *pPersonagem, Vector2f ds)
 		}
 		pPersonagem->setPos(posOutro);
 		pPersonagem->setVelFinal(velFinal);
+	}
+}
+*/
+
+void Perseguidor::cabeciar (Personagem* pPersonagem)
+{
+	if(pPersonagem){
+		Personagens::Jogadores::Jogador* pJogador = static_cast<Personagens::Jogadores::Jogador*>(pPersonagem);
+		pJogador->tomarDano(forcaCabecada);
+		pJogador->knockBack(forcaEmpurrao);
 	}
 }

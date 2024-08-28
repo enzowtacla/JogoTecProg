@@ -2,7 +2,8 @@
 
 #include "Obstaculo.h"  
 
-#define DANO_ESPINHO_PADRAO 0.10f
+#define DANO_ESPINHO_PADRAO 0.15f
+#define IMPULSO 150.0f
 #define CAMINHO_TEXTURA_ESPINHO ""
 
 namespace Jogo
@@ -17,6 +18,7 @@ namespace Jogo
             class Espinho : public Obstaculo {
             private:
                 float dano;
+                float impulso;
                 //void inicializarAnimacao();
 
             public:

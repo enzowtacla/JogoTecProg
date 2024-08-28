@@ -5,9 +5,8 @@ using namespace Personagens;
 using namespace sf;
 
 Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id) :
-	Entidade(pos, tam, id), velFinal(vel, 0.0f), velMax(vel), andando(false), paraEsquerda(false), dt(0.0f), animacao(&corpo), vida(VIDA)
+    Entidade(pos, tam, id), velFinal(vel, 0.0f), velMax(vel), andando(false), paraEsquerda(false), dt(0.0f), animacao(&corpo), vida(VIDA)
 {
-
 }
 
 Personagem::~Personagem()
@@ -28,7 +27,6 @@ void Personagem::parar()
 
 void Personagem::atualizarPosicao()
 {
-
 	dt = pGG->getTempo();
 	
 	Vector2f ds(0.f, 0.f);
@@ -47,7 +45,6 @@ void Personagem::atualizarPosicao()
 	setPos(Vector2f(pos.x + ds.x, pos.y + ds.y));
 
 	velFinal.x = velMax;
-
 }
 
 Vector2f Personagem::getVelFinal()
