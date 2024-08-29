@@ -14,7 +14,7 @@ using namespace Jogadores;
 using namespace Obstaculos;
 
 
-Fase::Fase(const IDs::ID id) :Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(800.0, 600.f),pGG->carregarTextura("./Assets/Fundo1.jpg"))//, numAleatorio(0)
+Fase::Fase(const IDs::ID id) :Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f),pGG->carregarTextura("./Assets/Fundo1.jpg"))//, numAleatorio(0)
 {
 
 }
@@ -131,14 +131,19 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 
 void Fase::desenhar()
 {
+	if(listaJogadores.getTam() == 0)
+	{
+		pGG->fecharJanela();
+	}
+	fundo.desenhar();
 	listaJogadores.executar();
 	listaInimigos.executar();
 	listaObstaculos.executar();
+
 }
 
 void Fase::executar()
 {
-	fundo.desenhar();
 	desenhar();
 	colisor.executar();
 	pGG->resetarRelogio();

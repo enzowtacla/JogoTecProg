@@ -68,6 +68,7 @@ void Jogo::Principal::Executar()
 
 		if(!menu->getCriarFase()){
 			menu->desenhar();
+			pGG->resetarRelogio();
 		}
 		else {
 			fase->executar();

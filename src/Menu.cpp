@@ -1,3 +1,4 @@
+
 #include "../include/Menus/Menu.h"
 
 using namespace Jogo;
@@ -10,7 +11,7 @@ Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false)
     fonte = pGG->getGrafico()->carregarFonte("Fonte/menu.ttf");
 
     std::vector<std::string> botoes = {
-        "Novo Jogo", "Carregar Jogo", "Selecionar Fase", "Ranking", "Sair"};
+        "Fase 1", "Fase 2", "1 jogador", "2 jogadores", "Ranking", "Sair"};
 
     for (int i = 0; i < botoes.size(); i++)
     {
@@ -72,6 +73,7 @@ void Menu::selecionado(int pos)
 {
     if(pos == 0){
         criarFase = true;
+        pGG->limpaJanela();
     }
     if (pos == 4)
     {
