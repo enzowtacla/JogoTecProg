@@ -50,7 +50,7 @@ void GerenciadorGrafico::desenhaElementos(RectangleShape corpo)
 	janela->draw(corpo);
 }
 
-void GerenciadorGrafico::desenhaElementos(Text texto)
+void GerenciadorGrafico::desenhaElemento(Text texto)
 {
 	janela->draw(texto);
 }

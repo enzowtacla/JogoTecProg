@@ -13,7 +13,6 @@ pJogador(pJogador), pular("W"), esquerda("A"), direita("D"), atacar("S")
 ObservadorJogador::~ObservadorJogador()
 {
     pJogador = nullptr;
-
 }
 
 

@@ -38,7 +38,7 @@ const Vector2f GerenciadorColisao::calculaColisao(Entidades::Entidade* ent1, Ent
 
 void GerenciadorColisao::executar()
 {
-	
+	std::cout << "Executando colisoes" << std::endl;
 	//Verifica colisao entre jogador e inimigo
 
 	for (int i = 0; i < listaJogadores->getTam(); i++)

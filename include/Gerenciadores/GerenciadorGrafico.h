@@ -25,7 +25,7 @@ namespace Jogo
 			RenderWindow* getJanela();
 			void limpaJanela();
 			void desenhaElementos(RectangleShape corpo);
-			void desenhaElementos(Text texto);
+			void desenhaElemento(Text texto);
 			void mostraElementos();
 			void fecharJanela();
 			const bool verificaJanelaAberta();

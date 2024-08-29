@@ -1,11 +1,13 @@
 #pragma once
 
 #include "Observador.h"
-#include "Menu.h"
-#include "Botao.h"
+
 
 namespace Jogo
 {
+    namespace Menus{
+        class Menu;
+    }
     namespace Observadores
     {
         class ObservadorMenu : public Observador
@@ -13,13 +15,16 @@ namespace Jogo
         private:
             Menus::Menu* menu;
 
+            std::string baixo;
+            std::string cima;
+            std::string seleciona;
+            static bool teclaApertada;
+
         public:
             ObservadorMenu(Menus::Menu* menu);
             ~ObservadorMenu();
             void notificarPressionada(std::string tecla);
             void notificarSolta(std::string tecla);
-            void moveMouse(const sf::Vector2f posMouse);
-            void botaoMouseSolta(const sf::Mouse::Button botaoMouse);
         };
     }
 }
