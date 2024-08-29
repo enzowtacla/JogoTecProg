@@ -3,10 +3,13 @@
 
 
 
+
+
+
 j  j    p a 
         o
 
-            p
-            o
-    p   p   p
-o    e o  s   o
+            p  p
+            o  
+                 
+o    e o  s   o     o

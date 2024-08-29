@@ -14,6 +14,7 @@ namespace IDs
 		fundo,//7
 		espinho,//8
 		slime, //9
-		plataforma //10
+		plataforma, //10
+		MenuPrincipal //11
 	};
 }
