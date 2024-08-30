@@ -3,7 +3,7 @@
 using namespace Jogo;
 using namespace Entidades;
 
-Entidade::Entidade(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id) : Ente(id), corpo(sf::RectangleShape(tam)), pos(pos), tam(tam), poderemover(false), velFinal(vel, 0.0f), velMax(vel)
+Entidade::Entidade(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id) : Ente(id), corpo(sf::RectangleShape(tam)), pos(pos), tam(tam), poderemover(false), velFinal(vel, 0.0f), velMax(vel), dt(0)
 {
 	corpo.setPosition(pos);
 }
