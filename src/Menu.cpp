@@ -4,7 +4,7 @@
 using namespace Jogo;
 using namespace Menus;
 
-Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false)
+Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false), numFase(0), numJogadores(0)
 {
     largura = pGG->getTamJanela().x;
     altura = pGG->getTamJanela().y;
@@ -71,17 +71,51 @@ void Menu::setPos(int pos)
 
 void Menu::selecionado(int pos)
 {
-    if(pos == 0){
-        criarFase = true;
-        pGG->limpaJanela();
-    }
-    if (pos == 4)
+    switch(pos)
     {
-        pGG->fecharJanela();
+        case(0):
+        {
+            criarFase = true;
+            numFase = 1;
+            pGG->limpaJanela();
+        }break;
+
+        case(1):
+        {
+            criarFase = true;
+            numFase = 2;
+            pGG->limpaJanela();
+        }break;
+
+        case(2):
+        {
+            numJogadores = 1;
+        }break;
+
+        case(3):
+        {
+            numJogadores = 2;
+        }break;
+
+        case(4):
+        {
+
+        }break;
+
+        case(5):
+        {
+            pGG->fecharJanela();
+        }break;
     }
+
 }
 
 const bool Menu::getCriarFase() const
 {
     return criarFase;
+}
+
+const int Menu::getNumFase() const
+{
+    return numFase;
 }

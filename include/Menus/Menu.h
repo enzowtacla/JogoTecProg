@@ -21,6 +21,9 @@ namespace Jogo
             float largura;
             float altura;
             bool criarFase;
+            int numFase;
+            int numJogadores;
+            
 
         public:
             Menu();
@@ -32,6 +35,7 @@ namespace Jogo
             void setPos(int pos);
             void desenhar();
             const bool getCriarFase() const;
+            const int getNumFase() const;
         };
     }
 }

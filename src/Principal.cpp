@@ -2,7 +2,7 @@
 using namespace sf;
 
 Jogo::Principal::Principal() :
-	pGG(pGG->getGrafico()), pEventos(pEventos->getGerenciadorEventos()), fase(nullptr), menu(nullptr), pInputs(pInputs->getGerenciadorInputs())
+	pGG(pGG->getGrafico()), pEventos(pEventos->getGerenciadorEventos()), fase1(nullptr), fase2(nullptr), menu(nullptr), pInputs(pInputs->getGerenciadorInputs())
 {
 	if (!pGG) {
 		std::cout << "Nao foi possivel criar o gerenciador grafico" << std::endl;
@@ -20,32 +20,48 @@ Jogo::Principal::Principal() :
 
 Jogo::Principal::~Principal()
 {
-	if (fase) {
-		delete(fase);
-		fase = nullptr;
+	if (fase1) {
+		delete(fase1);
+		fase1 = nullptr;
+	}
+
+	if (fase2) {
+		delete(fase2);
+		fase2 = nullptr;
 	}
 }
 
 void Jogo::Principal::inicializar()
 {
-	criarFase();
+	criarFase1();
+	//criarFase2();
 	criarMenu();
 	Executar();
 }
 
-void Jogo::Principal::criarFase() 
+void Jogo::Principal::criarFase1() 
 {
-
     Fases::Fase1* aux = new Fases::Fase1();
     //Fases::Fase2* aux = new Fases::Fase2();
     if (!aux) {
         std::cout << "Nao foi possivel criar a fase na Principal" << std::endl;
         exit(1);
     }
-    fase = static_cast<Fases::Fase*>(aux);
+    fase1 = static_cast<Fases::Fase*>(aux);
 
-    fase->criarMapa("./Niveis/fase1_mapa.txt");
+    fase1->criarMapa("./Niveis/fase1_mapa.txt");
+}
 
+void Jogo::Principal::criarFase2()
+{
+    Fases::Fase2* aux = new Fases::Fase2();
+    if (!aux) {
+        std::cout << "Nao foi possivel criar a fase na Principal" << std::endl;
+        exit(1);
+    }
+    fase2 = static_cast<Fases::Fase*>(aux);
+
+    fase2->criarMapa("./Niveis/fase2_mapa.txt");
 }
 
 
@@ -71,7 +87,12 @@ void Jogo::Principal::Executar()
 			pGG->resetarRelogio();
 		}
 		else {
-			fase->executar();
+			if(menu->getNumFase() == 1){
+				fase1->executar();
+			}
+			else if(menu->getNumFase() == 2){
+				fase2->executar();
+			}
 		}
 		
 		pGG->mostraElementos();
