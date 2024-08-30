@@ -7,9 +7,8 @@
 
 
 j  j    p a 
-        o
-
-            p  p
-            o  
-                 
-o    e o  s   o     o
+        oe
+            p a p
+            o  e  
+       a     a    a   
+o    e o  s   oe   eo
