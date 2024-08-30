@@ -40,11 +40,13 @@ namespace Jogo
 		protected:
 			void criarCogumelo(const sf::Vector2f pos);
 			virtual void criarPerseguidor(const sf::Vector2f pos);
+			//virtual void criarChefao(const sf::Vector2f pos);
 			virtual void criarJogador(const sf::Vector2f pos) = 0;
 			void criarPlataforma(const sf::Vector2f pos);
 			virtual void criarSlime(const sf::Vector2f pos);
 			//virtual void criarLava(const sf::Vector2f pos);
 			void criarEspinho(const sf::Vector2f pos);
+
 		};
 
 	}

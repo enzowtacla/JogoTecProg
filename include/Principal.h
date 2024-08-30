@@ -17,11 +17,13 @@ namespace Jogo {
 		Gerenciadores::GerenciadorEventos* pEventos;
 		Gerenciadores::GerenciadorInputs* pInputs;
 		
-		Fases::Fase* fase;
+		Fases::Fase* fase1;
+		Fases::Fase* fase2;
 		Menus::Menu* menu;
 
 		void inicializar();
-		void criarFase();
+		void criarFase1();
+		void criarFase2();
 		void criarMenu();
 	public:
 		Principal();
