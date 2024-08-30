@@ -17,9 +17,9 @@ namespace Jogo
 			Fase1();
 			~Fase1();
 			void criarMapa(const std::string& arquivoTxt);
-			void criarPerseguidor(const sf::Vector2f pos);
 			void criarJogador(const sf::Vector2f pos);
 			void criarSlime(const sf::Vector2f pos);
+			void criarPerseguidor(const sf::Vector2f pos);
 		};
 	}
 }

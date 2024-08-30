@@ -47,34 +47,6 @@ void Fase1::criarMapa(const std::string& arquivoTxt)
 	arquivo.close();
 }
 
-void Fase1::criarPerseguidor(const sf::Vector2f pos)
-{
-	if(qtdePers < numPers)
-	{
-		Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
-
-		if (!perseguidor) {
-			std::cout << "Nao foi possivel criar o inimigo" << std::endl;
-		}
-
-		listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
-		qtdePers++;
-	}
-	else 
-	{
-		if(rand()%100 < 25){
-			Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
-
-			if (!perseguidor) {
-				std::cout << "Nao foi possivel criar o inimigo" << std::endl;
-			}
-
-			listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
-			qtdePers++;
-		}
-	}
-}
-
 void Fase1::criarJogador(const sf::Vector2f pos)
 {
 	
@@ -134,5 +106,32 @@ void Fase1::criarSlime(const sf::Vector2f pos)
 			qtdeSlimes++;
 		}
 	}
+}
 
+void Fase1::criarPerseguidor(const sf::Vector2f pos)
+{
+	if(qtdePers < numPers)
+	{
+		Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
+
+		if (!perseguidor) {
+			std::cout << "Nao foi possivel criar o inimigo" << std::endl;
+		}
+
+		listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
+		qtdePers++;
+	}
+	else 
+	{
+		if(rand()%100 < 25){
+			Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
+
+			if (!perseguidor) {
+				std::cout << "Nao foi possivel criar o inimigo" << std::endl;
+			}
+
+			listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
+			qtdePers++;
+		}
+	}
 }

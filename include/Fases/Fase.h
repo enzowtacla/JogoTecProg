@@ -21,7 +21,12 @@ namespace Jogo
 			Gerenciadores::GerenciadorColisao colisor;
 			Gerenciadores::GerenciadorInputs* pInputs;
 			Fundos::Fundo fundo;
-			//int numAleatorio;
+
+			//controle de geração
+			static int qtdCogu;
+			static int qtdEsp;
+			const int numCogu;
+			const int numEsp;
 
 		public:
 			Fase(const IDs::ID id);
@@ -34,10 +39,11 @@ namespace Jogo
 		//Template Method
 		protected:
 			void criarCogumelo(const sf::Vector2f pos);
-			virtual void criarPerseguidor(const sf::Vector2f pos)= 0;
+			virtual void criarPerseguidor(const sf::Vector2f pos);
 			virtual void criarJogador(const sf::Vector2f pos) = 0;
-			void criarObstaculo(const sf::Vector2f pos);
-			virtual void criarSlime(const sf::Vector2f pos) = 0;
+			void criarPlataforma(const sf::Vector2f pos);
+			virtual void criarSlime(const sf::Vector2f pos);
+			//virtual void criarLava(const sf::Vector2f pos);
 			void criarEspinho(const sf::Vector2f pos);
 		};
 
