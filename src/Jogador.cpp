@@ -8,87 +8,83 @@ using namespace Jogadores;
 int Jogador::cont_j(0);
 
 Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
-	Personagem(pos, tam, VELOCIDADE_JOGADOR_X, IDs::ID::jogador), noChao(false), num_jogador(cont_j++)
+    Personagem(pos, tam, VELOCIDADE_JOGADOR_X, IDs::ID::jogador), noChao(false), num_jogador(cont_j++)
 {
-	corpo.setFillColor(Color::Cyan);
-	corpo.setPosition(pos);
-	inicializa();
+    corpo.setFillColor(Color::Cyan);
+    corpo.setPosition(pos);
+    inicializa();
 }
 
 Jogador::~Jogador()
 {
-
 }
 
 void Jogador::inicializa()
 {
-	animacao.addAnimacao("./Assets/Parado.png", "PARADO", 11, 0.12f, sf::Vector2f(2, 2));
-	animacao.addAnimacao("./Assets/Anda.png", "ANDA", 12, 0.12f, sf::Vector2f(2, 2));
-	corpo.setOrigin(sf::Vector2f(tam.x / 2.5f, tam.y / 2.0f));
+    // Inicialização de animações e outros recursos
 }
 
 const RectangleShape Jogador::getCorpo()
 {
-	return corpo;
+    return corpo;
 }
 
 void Jogador::atualizar()
 {
-	if(vida <= 0.f){
-		poderemover = true;
-	}
-	atualizarPosicao();
-	atualizarAnimacao();
+    if (vida <= 0.f)
+    {
+        poderemover = true;
+    }
+    atualizarPosicao();
 }
 
 void Jogador::desenhar()
 {
-	pGG->desenhaElementos(corpo);
+    pGG->desenhaElementos(corpo);
 }
 
 void Jogador::atualizarAnimacao()
 {
-	if (andando) {
-		animacao.atualizar(paraEsquerda, "ANDA");
-	}
-	else if (!andando) {
-		animacao.atualizar(paraEsquerda, "PARADO");
-	}
+    if (andando) {
+        animacao.atualizar(paraEsquerda, "ANDA");
+    }
+    else if (!andando) {
+        animacao.atualizar(paraEsquerda, "PARADO");
+    }
 }
 
 void Jogador::podePular()
 {
-	noChao = true;
+    noChao = true;
 }
 
 void Jogador::pular()
 {
-	if (noChao) {
-		//std::cout << "Pulo realizado" << std::endl;
-		velFinal.y = -sqrt(2.f * GRAVIDADE * TAMANHO_PULO);
-		noChao = false;
-	}
+    if (noChao) {
+        velFinal.y = -sqrt(2.f * GRAVIDADE * TAMANHO_PULO);
+        noChao = false;
+    }
 }
 
 const bool Jogador::getAndando() const
 {
-	return andando;
+    return andando;
 }
 
-const int Jogador::getNum()const
+const int Jogador::getNum() const
 {
-	return num_jogador;
+    return num_jogador;
 }
 
 void Jogador::tomarDano(float dano)
 {
-	vida -= dano;
-	std::cout << "Jogador: " << getNum() << " tomou dano" << std::endl;
+    vida -= dano;
+    std::cout << "Jogador: " << getNum() << " tomou dano" << std::endl;
 }
 
 void Jogador::colisao(Entidade* outra, sf::Vector2f ds)
 {
-	
+    // Lógica de colisão aqui
 }
 
 float Jogador::getVelocidadeMovimento() const
@@ -98,13 +94,12 @@ float Jogador::getVelocidadeMovimento() const
 
 float Jogador::getVelocidadePulo() const
 {
-    return TAMANHO_PULO; // Retorna o valor do pulo atual
+    return TAMANHO_PULO;
 }
 
 void Jogador::restaurarValoresOriginais()
 {
     velFinal.x = VELOCIDADE_JOGADOR_X;
-    // TAMANHO_PULO pode ser restaurado para o valor padrão de pulo
 }
 
 void Jogador::setVelocidadeMovimento(float velocidade)
@@ -112,4 +107,17 @@ void Jogador::setVelocidadeMovimento(float velocidade)
     velFinal.x = velocidade;
 }
 
- // Implemente o ajuste na altura do pulo conforme necessário
+void Jogador::knockBack(float dist)
+{
+    velFinal.y = -sqrt(2.f * GRAVIDADE * (TAMANHO_PULO / 2));
+
+    if (dist > 75)
+    {
+        velFinal.x = velFinal.x * -dist;
+    }
+}
+
+const bool Jogador::getVivo() const
+{
+    return (vida > 0.f);
+}

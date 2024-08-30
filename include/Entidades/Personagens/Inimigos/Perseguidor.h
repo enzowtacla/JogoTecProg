@@ -3,8 +3,8 @@
 #include "../Jogadores/Jogador.h"
 #define ALCANCE_X 200.0f
 #define ALCANCE_Y 200.0f
-#define EMPURRAO 5.f
-#define CABECADA 0.05f
+#define EMPURRAO 75.0f
+#define CABECADA 10.f
 
 namespace Jogo
 {
@@ -31,7 +31,7 @@ namespace Jogo
 					void persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo);
 					void atualizarAnimacao();
 					void colisao(Entidade* outra, sf::Vector2f ds);
-					void colisaoPerseguidor(Personagem* pPersonagem, Vector2f ds);
+					void cabeciar(Personagem* pPersonagem);
 				};
 			}
 		}

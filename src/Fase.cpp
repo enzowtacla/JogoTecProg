@@ -4,6 +4,7 @@
 #include "../include/Entidades/Obstaculos/Plataforma.h"
 #include "../include/Entidades/Obstaculos/Slime.h"
 #include "../include/Entidades/Obstaculos/Espinho.h"
+#include "../include/Entidades/Obstaculos/Lava.h"
 
 using namespace Jogo;
 using namespace Fases;
@@ -124,6 +125,17 @@ void Fase::criarEspinho(const sf::Vector2f pos)
 	}
 }
 
+void Fase::criarLava(const sf::Vector2f pos)
+{
+	Entidades::Obstaculos::Lava* lava1 = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
+
+
+	if (!lava1) {
+		std::cout << "Nao foi possivel criar a lava" << std::endl;
+	}
+
+	listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(lava1));
+}
 
 void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 {
@@ -162,6 +174,12 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 		case('e'):
 		{
 			criarEspinho(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+		}
+		break;
+
+		case('L'):
+		{
+			criarLava(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
 		}
 		break;
 	}
