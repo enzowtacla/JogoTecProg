@@ -8,13 +8,15 @@ namespace IDs
 		inimigo,// 1
 		cogumelo,//2
 		perseguidor,//3
-		obstaculo,// 4
-		fase1,// 5
-		fase2,// 6
-		fundo,//7
-		espinho,//8
-		slime, //9
-		plataforma, //10
-		MenuPrincipal //11
+		chefao, //4
+		obstaculo,// 5
+		fase1,// 6
+		fase2,// 7
+		fundo,//8
+		espinho,//9
+		slime, //10
+		plataforma, //11
+		lava, //12
+		MenuPrincipal //13
 	};
 }
