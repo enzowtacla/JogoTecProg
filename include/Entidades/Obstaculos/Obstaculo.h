@@ -4,6 +4,8 @@
 #include "../Personagens/Jogadores/Jogador.h"
 #include "../Personagens/Inimigos/Inimigo.h"
 
+#define EMPUXO -800.f
+#define VELOCIDADE 0.f
 
 using namespace sf;
 
@@ -23,6 +25,7 @@ namespace Jogo
 				Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::ID id);
 				virtual ~Obstaculo();
 				virtual void atualizar(); //desenhar
+				void atualizarPosicao();
 				const bool getDanoso() const;
 				virtual void colisao(Entidade* outra, sf::Vector2f ds) = 0;
 				//void Save(std::ofstream& savefile);

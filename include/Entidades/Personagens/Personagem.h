@@ -21,11 +21,6 @@ namespace Jogo
 			class Personagem :public Entidade
 			{
 			protected:
-				Vector2f velFinal;
-				bool paraEsquerda;
-				float dt;
-				bool andando;
-				const float velMax;
 				Animacoes::Animacao animacao;
 				float vida;
 
@@ -35,7 +30,7 @@ namespace Jogo
 				void andar(const bool paraEsquerda);
 				void parar();
 				virtual void atualizar() = 0;
-				void atualizarPosicao();
+				//void atualizarPosicao();
 				Vector2f getVelFinal();
 				void setVelFinal(const Vector2f velFinal);
 				virtual void desenhar();

@@ -63,5 +63,6 @@ void Plataforma::colisaoObstaculo(Vector2f ds, Personagens::Personagem* pPersona
 
 void Plataforma::atualizar()
 {
-    desenhar();
+    //desenhar();
+    atualizarPosicao();
 }

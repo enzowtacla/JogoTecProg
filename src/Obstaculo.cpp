@@ -4,7 +4,7 @@ using namespace Jogo;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::ID id) : Entidade(pos, tam, id), danoso(false)
+Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::ID id) : Entidade(pos, tam,VELOCIDADE, id), danoso(false)
 {
 	//corpo.setPosition(pos);
 	//textura = pGG->carregarTextura("./Assets/plataforma.png");
@@ -18,7 +18,7 @@ Obstaculo::~Obstaculo()
 
 void Obstaculo::atualizar()
 {
-    // desenhar();
+    atualizarPosicao();
 }
 
 void Obstaculo::colisao(Entidade* outra, sf::Vector2f ds)
@@ -29,6 +29,22 @@ void Obstaculo::colisao(Entidade* outra, sf::Vector2f ds)
 const bool Obstaculo::getDanoso() const
 {
     return danoso;
+}
+
+void Obstaculo::atualizarPosicao()
+{
+	dt = pGG->getTempo();
+	
+	Vector2f ds(0.f, 0.f);
+
+	const float Vy = velFinal.y;
+	velFinal.y = (velFinal.y + GRAVIDADE * dt) + (velFinal.y + EMPUXO * dt);
+	ds.y = Vy * dt + (GRAVIDADE * dt * dt) / 2.0f;
+
+	setPos(Vector2f(pos.x + ds.x, pos.y + ds.y));
+
+	velFinal.x = velMax;
+
 }
 
 

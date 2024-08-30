@@ -38,10 +38,10 @@ namespace Jogo {
 	            }
             }
 
-            /*void Espinho::inicializarAnimacao() {
-                textura = pGrafico->carregarTextura(CAMINHO_TEXTURA_ESPINHO);
-                corpo.setTexture(&textura);
-            }*/
+            void Espinho::atualizar()
+            {
+                atualizarPosicao();
+            }
 
         }
 
