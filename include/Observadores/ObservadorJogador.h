@@ -21,14 +21,13 @@ namespace Jogo
             std::string pular;
             std::string esquerda;
             std::string direita;
-            std::string atacar;
 
         public:
             ObservadorJogador(Entidades::Personagens::Jogadores::Jogador* pJogador);
             ~ObservadorJogador();
             void notificarPressionada(std::string tecla);
             void notificarSolta(std::string tecla);
-            void setTeclas(std::string pulo, std::string pesquerda, std::string direita, std::string atacar);
+            void setTeclas(std::string pulo, std::string pesquerda, std::string direita);
         };
     }
 }

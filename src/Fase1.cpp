@@ -132,7 +132,7 @@ void Fase1::criarJogador(const sf::Vector2f pos)
 		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
 
 		Observadores::ObservadorJogador* obsJ2 = new Observadores::ObservadorJogador(jogador);
-		obsJ2->setTeclas("Up", "Left", "Right", "Down");
+		obsJ2->setTeclas("Up", "Left", "Right");
 		pInputs->incluir(static_cast<Observadores::Observador*>(obsJ2));
 		Perseguidor::setJogador2(jogador);
 	}

@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Ente.h"
-#include "Fase1.h"
-#include "Fase2.h"
 #include <vector>
 
 #define TAMANHO_BOTAO_X 350.f

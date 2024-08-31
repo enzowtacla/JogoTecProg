@@ -5,7 +5,7 @@ using namespace Jogo;
 using namespace Observadores;
 
 ObservadorJogador::ObservadorJogador(Entidades::Personagens::Jogadores::Jogador* pJogador) : Observador(),
-pJogador(pJogador), pular("W"), esquerda("A"), direita("D"), atacar("S")
+pJogador(pJogador), pular("W"), esquerda("A"), direita("D")
 {
 
 }
@@ -39,10 +39,9 @@ void ObservadorJogador::notificarSolta(std::string tecla)
 	}
 }
 
-void ObservadorJogador::setTeclas(std::string pulo, std::string esquerda, std::string direita, std::string atacar)
+void ObservadorJogador::setTeclas(std::string pulo, std::string esquerda, std::string direita)
 {
     this->pular = pulo;
     this->esquerda = esquerda;
     this->direita = direita;
-    this->atacar = atacar;
 }
