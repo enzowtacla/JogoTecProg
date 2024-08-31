@@ -1,9 +1,9 @@
-
 #include "../include/Menus/Menu.h"
 
 using namespace Jogo;
 using namespace Menus;
 
+Menu* Menu::pMenu(nullptr);
 
 Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false), numFase(0), numJogadores(0)
 {
@@ -12,7 +12,7 @@ Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false), num
     fonte = pGG->getGrafico()->carregarFonte("Fonte/menu.ttf");
 
     std::vector<std::string> botoes = {
-        "Fase 1", "Fase 2", "1 jogador", "2 jogadores", "Ranking", "Sair"};
+        "Floresta Gosmenta", "Poco de Lava", "1 jogador", "2 jogadores", "Ranking", "Sair"};
 
     for (int i = 0; i < botoes.size(); i++)
     {
@@ -29,6 +29,14 @@ Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false), num
 
 Menu::~Menu()
 {
+}
+
+Menu* Menu::getMenu()
+{
+    if(!pMenu){
+        pMenu = new Menu();
+    }
+    return pMenu;
 }
 
 void Menu::desenhar()
@@ -91,11 +99,13 @@ void Menu::selecionado(int pos)
         case(2):
         {
             numJogadores = 1;
+            std::cout << " " << numJogadores <<std::endl;
         }break;
 
         case(3):
         {
             numJogadores = 2;
+            std::cout << " " << numJogadores <<std::endl;
         }break;
 
         case(4):
@@ -119,4 +129,9 @@ const bool Menu::getCriarFase() const
 const int Menu::getNumFase() const
 {
     return numFase;
+}
+
+const int Menu::getNumJogadores() const
+{
+    return numJogadores;
 }

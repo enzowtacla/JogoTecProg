@@ -6,6 +6,7 @@
 #include "../Gerenciadores/GerenciadorColisao.h"
 #include "../oBSERVADORES/ObservadorJogador.h"
 #include "../Fundo/Fundo.h"
+#include "../Menus/Menu.h"
 
 
 namespace Jogo
@@ -27,6 +28,8 @@ namespace Jogo
 			int qtdEsp;
 			const int numCogu;
 			const int numEsp;
+			Menus::Menu* menu;
+			bool removeu;
 
 		public:
 			Fase(const IDs::ID id);
@@ -36,6 +39,7 @@ namespace Jogo
 			void executar();
 			void desenhar();
 			int getNumInimigos();
+			void removeJogador();
 		//Template Method
 		protected:
 			void criarCogumelo(const sf::Vector2f pos);

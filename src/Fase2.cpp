@@ -14,7 +14,7 @@ using namespace Obstaculos;
 int Fase2::qtdeChefao(0);
 int Fase2::qtdeLavas(0);
 
-Fase2::Fase2() : Fase(IDs::ID::fase2), numChefao(rand()%3 + 3), numLavas(rand()%3 + 3)
+Fase2::Fase2() : Fase(IDs::ID::fase2), numChefao(rand() % 3 + 3), numLavas(rand() % 3 + 3)
 {
 }
 
@@ -51,7 +51,7 @@ void Fase2::criarJogador(const sf::Vector2f pos)
 {
 	Entidades::Personagens::Jogadores::Jogador *jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.f, 50.f));
 
-	if (jogador->getNum() == 3)
+	if (jogador->getNum() == 2)
 	{
 		std::cout << "Jogador criado" << std::endl;
 		if (!jogador)
@@ -98,7 +98,7 @@ void Fase2::criarChefao(const sf::Vector2f pos)
 	}
 	else
 	{
-		if(rand()%100 < 25)
+		if (rand() % 100 < 25)
 		{
 			Chefao *chefao = new Entidades::Personagens::Inimigos::Chefao(pos, sf::Vector2f(45.f, 75.f));
 			colisor.setProjetil(chefao->getListaProjetil());
@@ -108,8 +108,8 @@ void Fase2::criarChefao(const sf::Vector2f pos)
 				std::cout << "Nao foi possivel criar o inimigo" << std::endl;
 			}
 
-			listaInimigos.addEntidade(static_cast<Entidades::Entidade *>(chefao));	
-			qtdeChefao++;		
+			listaInimigos.addEntidade(static_cast<Entidades::Entidade *>(chefao));
+			qtdeChefao++;
 		}
 	}
 }

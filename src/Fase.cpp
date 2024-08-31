@@ -16,7 +16,7 @@ using namespace Jogadores;
 using namespace Obstaculos;
 
 Fase::Fase(const IDs::ID id) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), pGG->carregarTextura("./Assets/Fundo1.jpg")), numCogu(rand() % 3 + 3), numEsp(rand() % 3 + 3), qtdCogu(0),
-qtdEsp(0)
+qtdEsp(0), menu(menu->getMenu()), removeu(false)
 {
 }
 
@@ -218,6 +218,9 @@ void Fase::desenhar()
 
 void Fase::executar()
 {
+	if(!removeu){
+		removeJogador();
+	}
 	desenhar();
 	colisor.executar();
 	pGG->resetarRelogio();
@@ -226,4 +229,18 @@ void Fase::executar()
 int Fase::getNumInimigos()
 {
 	return ((int)listaInimigos.getTam());
+}
+
+void Fase::removeJogador()
+{
+	if(menu->getNumJogadores() == 1)
+	{
+		for(int i = 0; i < listaJogadores.getTam(); i++){
+			if(i % 2 != 0){
+				Jogadores::Jogador* pAux = dynamic_cast<Jogadores::Jogador*>(listaJogadores.operator[](i));
+				pAux->setRemover(true);
+			}
+		}
+	}
+	removeu = true;
 }
