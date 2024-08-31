@@ -20,6 +20,7 @@ namespace Jogo
 				void colisao(Entidade* outra, sf::Vector2f ds);
 				void colisaoObstaculo(Vector2f ds, Personagens::Personagem* pPersonagem);
 				void atualizar();
+				//void atualizarPosicao();
 			};
 		}
 	}

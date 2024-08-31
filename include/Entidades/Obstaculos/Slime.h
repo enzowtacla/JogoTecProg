@@ -21,6 +21,7 @@ namespace Jogo
                 void atualizar();
                 void colisao(Entidade* outra, sf::Vector2f ds) override;
                 void atrapalhar(Personagens::Jogadores::Jogador* pJogador);
+                //void atualizarPosicao();
                 //void Save(std::ofstream& savefile);
                 //void Load(std::ifstream& savefile);
             };

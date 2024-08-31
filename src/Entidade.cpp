@@ -3,16 +3,13 @@
 using namespace Jogo;
 using namespace Entidades;
 
-
-Entidade::Entidade(const sf::Vector2f pos, const sf::Vector2f tam, const IDs::ID id):
-	Ente(id), corpo(sf::RectangleShape(tam)), pos(pos), tam(tam), poderemover(false)
+Entidade::Entidade(const sf::Vector2f pos, const sf::Vector2f tam, const float vel, const IDs::ID id) : Ente(id), corpo(sf::RectangleShape(tam)), pos(pos), tam(tam), poderemover(false), velFinal(vel, 0.0f), velMax(vel), andando(false), dt(0.0f)
 {
 	corpo.setPosition(pos);
 }
 
 Entidade::~Entidade()
 {
-
 }
 
 const sf::RectangleShape Entidade::getCorpo() const
@@ -32,7 +29,7 @@ void Entidade::setTam(const sf::Vector2f tam)
 	this->tam = tam;
 }
 
-sf::Vector2f Entidade::getPos() 
+sf::Vector2f Entidade::getPos()
 {
 	return corpo.getPosition();
 }
