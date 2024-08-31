@@ -17,6 +17,7 @@ namespace IDs
 		slime, //10
 		plataforma, //11
 		lava, //12
-		MenuPrincipal //13
+		projetil, //14
+		MenuPrincipal //15
 	};
 }

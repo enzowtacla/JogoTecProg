@@ -32,6 +32,7 @@ namespace Jogo
 					void atualizar();
 					void desenhar();
 					virtual void colisao(Entidade* outra, sf::Vector2f ds) = 0;
+					virtual void tomarDano(const float dano);
 				};
 			}
 		}

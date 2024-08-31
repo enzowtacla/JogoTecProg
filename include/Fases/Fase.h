@@ -23,8 +23,8 @@ namespace Jogo
 			Fundos::Fundo fundo;
 
 			//controle de geração
-			static int qtdCogu;
-			static int qtdEsp;
+			int qtdCogu;
+			int qtdEsp;
 			const int numCogu;
 			const int numEsp;
 
@@ -40,7 +40,7 @@ namespace Jogo
 		protected:
 			void criarCogumelo(const sf::Vector2f pos);
 			virtual void criarPerseguidor(const sf::Vector2f pos);
-			//virtual void criarChefao(const sf::Vector2f pos);
+			virtual void criarChefao(const sf::Vector2f pos);
 			virtual void criarJogador(const sf::Vector2f pos) = 0;
 			void criarPlataforma(const sf::Vector2f pos);
 			virtual void criarSlime(const sf::Vector2f pos);

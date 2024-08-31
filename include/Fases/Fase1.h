@@ -13,6 +13,7 @@ namespace Jogo
 			static int qtdeSlimes;
 			const int numPers;
 			const int numSlimes;
+			
 		public:
 			Fase1();
 			~Fase1();

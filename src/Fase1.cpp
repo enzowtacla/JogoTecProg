@@ -15,7 +15,7 @@ int Fase1::qtdeSlimes(0);
 
 Fase1::Fase1() : Fase(IDs::ID::fase1), numPers(rand()%3 + 3), numSlimes(rand()%3 + 3)
 {
-	
+
 }
 
 Fase1::~Fase1()
@@ -55,7 +55,6 @@ void Fase1::criarSlime(const sf::Vector2f pos)
 	{
 		Entidades::Obstaculos::Slime* slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
 
-
 		if (!slime) {
 			std::cout << "Nao foi possivel criar o slime" << std::endl;
 		}
@@ -63,7 +62,8 @@ void Fase1::criarSlime(const sf::Vector2f pos)
 		listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(slime));
 		qtdeSlimes++;
 	}
-	else{
+	else
+	{
 		if(rand()%100 < 25){
 			Entidades::Obstaculos::Slime* slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
 
@@ -119,7 +119,6 @@ void Fase1::criarJogador(const sf::Vector2f pos)
 		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
 
 		Observadores::ObservadorJogador* obsJ1 = new Observadores::ObservadorJogador(jogador);
-		//obsJ1->setTeclas("W", "A", "D", "S");
 		pInputs->incluir(static_cast<Observadores::Observador*>(obsJ1));
 		Perseguidor::setJogador(jogador);
 	}

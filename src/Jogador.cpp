@@ -90,7 +90,7 @@ void Jogador::colisao(Entidade *outra, sf::Vector2f ds)
 
 void Jogador::colisaoJogador(Vector2f ds, Personagens::Personagem *pPersonagem)
 {
-    std::cout << "Entrou na colisao com jogador " << (int)pPersonagem->getId() <<std::endl;
+    //std::cout << "Entrou na colisao com jogador " << (int)pPersonagem->getId() <<std::endl;
     sf::Vector2f posOutro = pPersonagem->getPos();
     sf::Vector2f tamOutro = pPersonagem->getTam();
     sf::Vector2f velFinal = pPersonagem->getVelFinal();

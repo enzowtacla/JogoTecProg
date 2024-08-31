@@ -35,9 +35,9 @@ Jogo::Principal::~Principal()
 
 void Jogo::Principal::inicializar()
 {
+	criarMenu();
 	criarFase1();
 	criarFase2();
-	criarMenu();
 	Executar();
 }
 
