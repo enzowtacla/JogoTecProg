@@ -20,6 +20,7 @@ namespace Jogo {
 		Fases::Fase* fase1;
 		Fases::Fase* fase2;
 		Menus::Menu* menu;
+		int numInimigos;
 
 		void inicializar();
 		void criarFase1();

@@ -96,13 +96,13 @@ void Fase1::criarSlime(const sf::Vector2f pos)
 	}
 	else{
 		if(rand()%100 < 25){
-			Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
+			Entidades::Obstaculos::Slime* slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
 
-			if (!perseguidor) {
+			if (!slime) {
 				std::cout << "Nao foi possivel criar o inimigo" << std::endl;
 			}
 
-			listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
+			listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(slime));
 			qtdeSlimes++;
 		}
 	}

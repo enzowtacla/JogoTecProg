@@ -7,8 +7,7 @@ using namespace Jogadores;
 
 int Jogador::cont_j(0);
 
-Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
-    Personagem(pos, tam, VELOCIDADE_JOGADOR_X, IDs::ID::jogador), noChao(false), num_jogador(cont_j++)
+Jogador::Jogador(const Vector2f pos, const Vector2f tam) : Personagem(pos, tam, VELOCIDADE_JOGADOR_X, IDs::ID::jogador), noChao(false), num_jogador(cont_j++)
 {
     corpo.setFillColor(Color::Cyan);
     corpo.setPosition(pos);
@@ -45,10 +44,12 @@ void Jogador::desenhar()
 
 void Jogador::atualizarAnimacao()
 {
-    if (andando) {
+    if (andando)
+    {
         animacao.atualizar(paraEsquerda, "ANDA");
     }
-    else if (!andando) {
+    else if (!andando)
+    {
         animacao.atualizar(paraEsquerda, "PARADO");
     }
 }
@@ -60,7 +61,8 @@ void Jogador::podePular()
 
 void Jogador::pular()
 {
-    if (noChao) {
+    if (noChao)
+    {
         velFinal.y = -sqrt(2.f * GRAVIDADE * TAMANHO_PULO);
         noChao = false;
     }
@@ -76,15 +78,37 @@ const int Jogador::getNum() const
     return num_jogador;
 }
 
-void Jogador::tomarDano(float dano)
+void Jogador::colisao(Entidade *outra, sf::Vector2f ds)
 {
-    vida -= dano;
-    std::cout << "Jogador: " << getNum() << " tomou dano" << std::endl;
+    if (outra->getId() == IDs::ID::chefao ||
+        outra->getId() == IDs::ID::cogumelo ||
+        outra->getId() == IDs::ID::perseguidor)
+    {
+        colisaoJogador(ds, static_cast<Personagens::Personagem *>(outra));
+    }
 }
 
-void Jogador::colisao(Entidade* outra, sf::Vector2f ds)
+void Jogador::colisaoJogador(Vector2f ds, Personagens::Personagem *pPersonagem)
 {
-    // Lógica de colisão aqui
+    std::cout << "Entrou na colisao com jogador " << (int)pPersonagem->getId() <<std::endl;
+    sf::Vector2f posOutro = pPersonagem->getPos();
+    sf::Vector2f tamOutro = pPersonagem->getTam();
+    sf::Vector2f velFinal = pPersonagem->getVelFinal();
+    if (ds.x < 0.0f && ds.y < 0.0f) { //houve colisao
+        if(!(ds.x > ds.y)) {
+            if (posOutro.y < pos.y) { //colis�o em y
+                posOutro.y += ds.y;
+                pPersonagem->tomarDano(100);
+            }
+            else {
+                posOutro.y -= ds.y;
+                pPersonagem->tomarDano(100);
+            }
+            velFinal.y = 0.0f;
+        }
+    }
+    pPersonagem->setPos(posOutro);
+    pPersonagem->setVelFinal(velFinal);
 }
 
 float Jogador::getVelocidadeMovimento() const

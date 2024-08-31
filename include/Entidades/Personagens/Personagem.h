@@ -6,7 +6,7 @@
 #include <iostream>
 #include "../Entidade.h"
 
-
+#define VELOCIDADE 0
 #define GRAVIDADE 800.0f
 #define VIDA 100.0f
 
@@ -21,6 +21,11 @@ namespace Jogo
 			class Personagem :public Entidade
 			{
 			protected:
+				Vector2f velFinal;
+				bool paraEsquerda;
+				float dt;
+				bool andando;
+				const float velMax;
 				Animacoes::Animacao animacao;
 				float vida;
 
@@ -30,12 +35,13 @@ namespace Jogo
 				void andar(const bool paraEsquerda);
 				void parar();
 				virtual void atualizar() = 0;
-				//void atualizarPosicao();
+				void atualizarPosicao();
 				Vector2f getVelFinal();
 				void setVelFinal(const Vector2f velFinal);
 				virtual void desenhar();
 				virtual void colisao(Entidade* outra, sf::Vector2f ds = sf::Vector2f(0.f, 0.f)) = 0;
 				const float getVida() const;
+				void tomarDano(float dano);
 			};
 		}
 	}

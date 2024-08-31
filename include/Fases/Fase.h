@@ -35,7 +35,7 @@ namespace Jogo
 			void criarEntidade(char letra, const sf::Vector2i pos); //Método template
 			void executar();
 			void desenhar();
-
+			int getNumInimigos();
 		//Template Method
 		protected:
 			void criarCogumelo(const sf::Vector2f pos);

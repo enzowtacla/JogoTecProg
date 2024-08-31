@@ -8,7 +8,7 @@ using namespace Obstaculos;
 using namespace sf;
 
 Lava::Lava(const sf::Vector2f pos, const sf::Vector2f tam)
-    : Obstaculo(pos, tam, IDs::ID::lava), dano(DANO_LAVA), intervaloDano(INTERVALO_DANOS),
+    : Obstaculo(pos, tam, VELOCIDADE,IDs::ID::lava), dano(DANO_LAVA), intervaloDano(INTERVALO_DANOS),
       jogador1(nullptr), jogador2(nullptr), danosRestantes1(0), danosRestantes2(0)
 {
     corpo = sf::RectangleShape(tam);
@@ -22,7 +22,7 @@ Lava::~Lava()
 
 void Lava::atualizar()
 {
-    atualizarPosicao();
+    gravidadeObstaculo();
     if (jogador1)
     {
         aplicarDanoContinuo(jogador1, relogio1, danosRestantes1);

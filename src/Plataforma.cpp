@@ -4,7 +4,7 @@ using namespace Jogo;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(const Vector2f pos, const Vector2f tam) :Obstaculo(pos, tam, IDs::ID::plataforma)
+Plataforma::Plataforma(const Vector2f pos, const Vector2f tam) :Obstaculo(pos, tam, VELOCIDADE,IDs::ID::plataforma)
 {
 	textura = pGG->carregarTextura("./Assets/plataforma.png");
 	corpo.setTexture(&textura);
@@ -35,11 +35,9 @@ void Plataforma::colisaoObstaculo(Vector2f ds, Personagens::Personagem* pPersona
         if (ds.x > ds.y) {
             if (posOutro.x < pos.x) { //colis�o em x
                 posOutro.x += ds.x;
-                //std::cout << "Colidiu com jogador" << std::endl;
             }
             else {
                 posOutro.x -= ds.x;
-                //std::cout << "Colidiu com jogador" << std::endl;
             }
             velFinal.x = 0.0f;
         }
@@ -64,5 +62,5 @@ void Plataforma::colisaoObstaculo(Vector2f ds, Personagens::Personagem* pPersona
 void Plataforma::atualizar()
 {
     //desenhar();
-    atualizarPosicao();
+    gravidadeObstaculo();
 }

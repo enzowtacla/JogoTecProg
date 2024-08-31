@@ -20,12 +20,15 @@ namespace Jogo
 			protected:
 				bool danoso;
 				bool colidir;
+				float deltaT; //dt
+				Vector2f velFinal;
+
 				//sf::Texture textura;
 			public:
-				Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::ID id);
+				Obstaculo(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id);
 				virtual ~Obstaculo();
-				virtual void atualizar(); //desenhar
-				void atualizarPosicao();
+				virtual void atualizar() = 0; //desenhar
+				void gravidadeObstaculo();
 				const bool getDanoso() const;
 				virtual void colisao(Entidade* outra, sf::Vector2f ds) = 0;
 				//void Save(std::ofstream& savefile);

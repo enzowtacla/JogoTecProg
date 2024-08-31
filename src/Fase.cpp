@@ -34,7 +34,7 @@ void Fase::criarCogumelo(const sf::Vector2f pos)
 {
 	if(qtdCogu < numCogu)
 	{
-		Cogumelo* cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(34.f, 50.f));
+		Cogumelo* cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(50.f, 50.f));
 
 		if (!cogumelo){
 			std::cout << "Nao foi possivel criar o inimigo" << std::endl;
@@ -46,7 +46,7 @@ void Fase::criarCogumelo(const sf::Vector2f pos)
 	else{
 		if(rand()%100 < 25)
 		{
-			Cogumelo* cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(34.f, 50.f));
+			Cogumelo* cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(50.f, 50.f));
 
 			if (!cogumelo){
 				std::cout << "Nao foi possivel criar o inimigo" << std::endl;
@@ -61,7 +61,7 @@ void Fase::criarCogumelo(const sf::Vector2f pos)
 
 void Fase::criarPerseguidor(const sf::Vector2f pos)
 {
-	Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
+	Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(50.f, 50.f));
 
 	if (!perseguidor) {
 		std::cout << "Nao foi possivel criar o inimigo" << std::endl;
@@ -204,4 +204,10 @@ void Fase::executar()
 	desenhar();
 	colisor.executar();
 	pGG->resetarRelogio();
+}
+
+int Fase::getNumInimigos()
+{
+	//std::cout << " " << listaInimigos.getTam() << std::endl;
+	return ((int)listaInimigos.getTam());
 }

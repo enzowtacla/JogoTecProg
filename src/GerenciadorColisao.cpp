@@ -38,7 +38,6 @@ const Vector2f GerenciadorColisao::calculaColisao(Entidades::Entidade* ent1, Ent
 
 void GerenciadorColisao::executar()
 {
-	//std::cout << "Executando colisoes" << std::endl;
 	//Verifica colisao entre jogador e inimigo
 
 	for (int i = 0; i < listaJogadores->getTam(); i++)
@@ -48,8 +47,9 @@ void GerenciadorColisao::executar()
 		{
 			Entidades::Entidade* ent2 = listaInimigos->operator[](j);
 			Vector2f ds = calculaColisao(ent1, ent2);
-			if (ds.x < 0.0f && ds.y < 0.0f)
+			if (ds.x < 0.0f && ds.y < 0.0f){
 				ent2->colisao(ent1);
+			}
 		}
 	}
 
@@ -77,6 +77,20 @@ void GerenciadorColisao::executar()
 		for (int j = 0; j < listaObstaculos->getTam(); j++)
 		{
 			Entidades::Entidade* ent2 = listaObstaculos->operator[](j);
+			Vector2f ds = calculaColisao(ent1, ent2);
+			if (ds.x < 0.0f && ds.y < 0.0f) {
+
+				ent2->colisao(ent1, ds);
+			}
+		}
+	}
+
+	for (int i = 0; i < listaInimigos->getTam(); i++)
+	{
+		Entidades::Entidade* ent1 = listaInimigos->operator[](i);
+		for (int j = 0; j < listaJogadores->getTam(); j++)
+		{
+			Entidades::Entidade* ent2 = listaJogadores->operator[](j);
 			Vector2f ds = calculaColisao(ent1, ent2);
 			if (ds.x < 0.0f && ds.y < 0.0f) {
 

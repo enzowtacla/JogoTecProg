@@ -2,7 +2,7 @@
 using namespace sf;
 
 Jogo::Principal::Principal() :
-	pGG(pGG->getGrafico()), pEventos(pEventos->getGerenciadorEventos()), fase1(nullptr), fase2(nullptr), menu(nullptr), pInputs(pInputs->getGerenciadorInputs())
+	pGG(pGG->getGrafico()), pEventos(pEventos->getGerenciadorEventos()), fase1(nullptr), fase2(nullptr), menu(nullptr), pInputs(pInputs->getGerenciadorInputs()), numInimigos(0)
 {
 	if (!pGG) {
 		std::cout << "Nao foi possivel criar o gerenciador grafico" << std::endl;
@@ -34,7 +34,7 @@ Jogo::Principal::~Principal()
 void Jogo::Principal::inicializar()
 {
 	criarFase1();
-	//criarFase2();
+	criarFase2();
 	criarMenu();
 	Executar();
 }
@@ -42,7 +42,7 @@ void Jogo::Principal::inicializar()
 void Jogo::Principal::criarFase1() 
 {
     Fases::Fase1* aux = new Fases::Fase1();
-    //Fases::Fase2* aux = new Fases::Fase2();
+
     if (!aux) {
         std::cout << "Nao foi possivel criar a fase na Principal" << std::endl;
         exit(1);
@@ -89,6 +89,11 @@ void Jogo::Principal::Executar()
 		else {
 			if(menu->getNumFase() == 1){
 				fase1->executar();
+				numInimigos = fase1->getNumInimigos();
+			}
+			else if(numInimigos == 0){
+				std::cout << "Entrou aq" << std::endl;
+				fase2->executar();
 			}
 			else if(menu->getNumFase() == 2){
 				fase2->executar();

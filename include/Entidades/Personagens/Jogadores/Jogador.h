@@ -38,8 +38,8 @@ namespace Jogo
                     void pular();
                     const int getNum() const;
                     const bool getAndando() const;
-                    void tomarDano(float dano);
                     void colisao(Entidade* outra, sf::Vector2f ds);
+                    void colisaoJogador(Vector2f ds, Personagens::Personagem* pPersonagem);
                     float getVelocidadeMovimento() const;
                     float getVelocidadePulo() const;
                     void restaurarValoresOriginais();

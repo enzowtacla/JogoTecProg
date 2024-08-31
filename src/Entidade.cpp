@@ -3,38 +3,18 @@
 using namespace Jogo;
 using namespace Entidades;
 
-Entidade::Entidade(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id) : Ente(id), corpo(sf::RectangleShape(tam)), pos(pos), tam(tam), poderemover(false), velFinal(vel, 0.0f), velMax(vel), dt(0)
+
+Entidade::Entidade(const sf::Vector2f pos, const sf::Vector2f tam, const IDs::ID id):
+	Ente(id), corpo(sf::RectangleShape(tam)), pos(pos), tam(tam), poderemover(false)
 {
 	corpo.setPosition(pos);
 }
 
 Entidade::~Entidade()
 {
+
 }
 
-void Entidade::atualizarPosicao()
-{
-	dt = pGG->getTempo();
-
-	Vector2f ds(0.f, 0.f);
-
-	if (andando)
-	{
-		ds.x = velFinal.x * dt;
-		if (paraEsquerda)
-		{
-			ds.x *= -1;
-		}
-	}
-
-	const float Vy = velFinal.y;
-	velFinal.y = velFinal.y + GRAVIDADE * dt;
-	ds.y = Vy * dt + (GRAVIDADE * dt * dt) / 2.0f;
-
-	setPos(Vector2f(pos.x + ds.x, pos.y + ds.y));
-
-	velFinal.x = velMax;
-}
 const sf::RectangleShape Entidade::getCorpo() const
 {
 	return corpo;
@@ -52,7 +32,7 @@ void Entidade::setTam(const sf::Vector2f tam)
 	this->tam = tam;
 }
 
-sf::Vector2f Entidade::getPos()
+sf::Vector2f Entidade::getPos() 
 {
 	return corpo.getPosition();
 }

@@ -46,7 +46,7 @@ void Fase2::criarJogador(const sf::Vector2f pos)
 {
 	Entidades::Personagens::Jogadores::Jogador* jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.f, 50.f));
 
-	if(jogador->getNum() == 0)
+	if(jogador->getNum() == 3)
 	{
 		if (!jogador) {
 			std::cout << "Nao foi possivel criar o jogador 1" << std::endl;
