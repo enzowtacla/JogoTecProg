@@ -46,6 +46,7 @@ void Lava::colisao(Entidade* outra, sf::Vector2f ds)
         }
         else if (!jogador1)
         {
+            std::cout << "Aplicando dano da lava." << std::endl;
             jogador1 = jogador;
             danosRestantes1 = 2;
             jogador1->tomarDano(dano);
@@ -55,7 +56,6 @@ void Lava::colisao(Entidade* outra, sf::Vector2f ds)
         {
             jogador2 = jogador;
             danosRestantes2 = 2;
-            //std::cout << "Aplicando dano da lava." << std::endl;
             jogador2->tomarDano(dano);
             relogio2.restart();
         }
@@ -81,7 +81,7 @@ void Lava::aplicarDanoContinuo(Personagens::Jogadores::Jogador* pJogador, sf::Cl
     {
         if (relogio.getElapsedTime().asSeconds() >= intervaloDano)
         {
-            //std::cout << "Aplicando dano da lava CONTINUA." << std::endl;
+            std::cout << "Aplicando dano da lava CONTINUA." << std::endl;
             pJogador->tomarDano(dano);
             danosRestantes--;
             relogio.restart();

@@ -3,7 +3,7 @@
 #include "../Obstaculos/Obstaculo.h"
 #include <SFML/System/Clock.hpp>
 
-#define DANO_LAVA 0.07f
+#define DANO_LAVA 0.5f
 #define INTERVALO_DANOS 2.5f
 #define VELOCIDADE_LAVA 0.f
 

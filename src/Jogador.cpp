@@ -96,11 +96,7 @@ void Jogador::colisaoJogador(Vector2f ds, Personagens::Personagem *pPersonagem)
     sf::Vector2f velFinal = pPersonagem->getVelFinal();
     if (ds.x < 0.0f && ds.y < 0.0f) { //houve colisao
         if(!(ds.x > ds.y)) {
-            if (posOutro.y < pos.y) { //colis�o em y
-                posOutro.y += ds.y;
-                pPersonagem->tomarDano(100);
-            }
-            else {
+            if(posOutro.y >- pos.y) {
                 posOutro.y -= ds.y;
                 pPersonagem->tomarDano(100);
             }
