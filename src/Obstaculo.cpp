@@ -35,11 +35,9 @@ void Obstaculo::gravidadeObstaculo()
 
 	const float Vy = velFinal.y;
 	velFinal.y = (velFinal.y + GRAVIDADE * deltaT) + (velFinal.y + EMPUXO * deltaT);
-	ds.y = Vy * deltaT + (GRAVIDADE * deltaT * deltaT) / 2.0f;
+	ds.y = Vy * deltaT + ((GRAVIDADE+EMPUXO) * deltaT * deltaT) / 2.0f;
 
 	setPos(Vector2f(pos.x + ds.x, pos.y + ds.y));
-
-	//velFinal.x = velMax;
 }
 
 

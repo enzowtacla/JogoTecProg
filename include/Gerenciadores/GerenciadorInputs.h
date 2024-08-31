@@ -1,3 +1,4 @@
+//Chain of Responsability - Padrão de projeto
 #pragma once
 
 #include <list>
