@@ -4,7 +4,7 @@ using namespace Jogo;
 using namespace Fases;
 
 Jogo::Principal::Principal() :
-	pGG(pGG->getGrafico()), pEventos(pEventos->getGerenciadorEventos()), fase1(nullptr), fase2(nullptr), menu(nullptr), pInputs(pInputs->getGerenciadorInputs()), numInimigos(0)
+	pGG(pGG->getGrafico()), pEventos(pEventos->getGerenciadorEventos()), fase1(nullptr), fase2(nullptr), menu(menu->getMenu()), pInputs(pInputs->getGerenciadorInputs()), numInimigos(0)
 {
 	if (!pGG) {
 		std::cout << "Nao foi possivel criar o gerenciador grafico" << std::endl;
@@ -69,7 +69,7 @@ void Jogo::Principal::criarFase2()
 
 void Jogo::Principal::criarMenu()
 {
-	menu = new Menus::Menu();
+	menu = menu->getMenu();
 	if(menu){
 		Observadores::ObservadorMenu* obsMenu = new Observadores::ObservadorMenu(menu);
 		pInputs->incluir(static_cast<Observadores::ObservadorMenu*>(obsMenu));
@@ -107,4 +107,3 @@ void Jogo::Principal::Executar()
 	}
 
 }
-

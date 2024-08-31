@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Ente.h"
 #include <vector>
 
@@ -21,11 +20,13 @@ namespace Jogo
             bool criarFase;
             int numFase;
             int numJogadores;
-            
+
+            static Menu* pMenu;
+            Menu();
 
         public:
-            Menu();
             ~Menu();
+            static Menu* getMenu();
             void moveCima();
             void moveBaixo();
             void selecionado(int pos);
@@ -34,6 +35,7 @@ namespace Jogo
             void desenhar();
             const bool getCriarFase() const;
             const int getNumFase() const;
+            const int getNumJogadores() const;
         };
     }
 }
