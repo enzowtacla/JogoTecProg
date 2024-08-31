@@ -6,11 +6,9 @@ using namespace Gerenciadores;
 GerenciadorEventos* GerenciadorEventos::pEventos(nullptr);
 
 GerenciadorEventos::GerenciadorEventos():
-pGG(pGG->getGrafico()), pInputs(pInputs->getGerenciadorInputs()), pJanela(nullptr)
+pGG(pGG->getGrafico()), pInputs(pInputs->getGerenciadorInputs())
 {
-	if(pGG != nullptr){
-		pJanela = pGG->getJanela();
-	}
+
 }
 
 GerenciadorEventos::~GerenciadorEventos()
@@ -30,7 +28,7 @@ void GerenciadorEventos::executar()
 {
 	sf::Event evento;
 
-	if(pJanela->pollEvent(evento))
+	if(pGG->getJanela()->pollEvent(evento))
 	{
 		if (evento.type == sf::Event::KeyPressed) {
 			pInputs->tratarTeclaPressionada(evento.key.code);

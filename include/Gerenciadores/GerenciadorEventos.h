@@ -12,7 +12,6 @@ namespace Jogo
 		private:
 			GerenciadorGrafico* pGG;
 			GerenciadorInputs* pInputs;
-			RenderWindow* pJanela;
 
 			static GerenciadorEventos* pEventos;
 			GerenciadorEventos();
