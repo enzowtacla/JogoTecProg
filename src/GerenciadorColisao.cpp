@@ -4,7 +4,7 @@ using namespace Jogo;
 using namespace Gerenciadores;
 using namespace sf;
 
-GerenciadorColisao::GerenciadorColisao(Listas::ListaEntidade* lJ, Listas::ListaEntidade* lI, Listas::ListaEntidade* lO) :listaJogadores(lJ), listaInimigos(lI), listaObstaculos(lO)
+GerenciadorColisao::GerenciadorColisao(Listas::ListaEntidade* lJ, Listas::ListaEntidade* lI, Listas::ListaEntidade* lO, std::vector<Entidades::Projetil*> *lP) :listaJogadores(lJ), listaInimigos(lI), listaObstaculos(lO)
 {
 	
 }
@@ -85,6 +85,8 @@ void GerenciadorColisao::executar()
 		}
 	}
 
+	//Verifica colisão de inimigos com jogadores para dano
+
 	for (int i = 0; i < listaInimigos->getTam(); i++)
 	{
 		Entidades::Entidade* ent1 = listaInimigos->operator[](i);
@@ -98,4 +100,30 @@ void GerenciadorColisao::executar()
 			}
 		}
 	}
+
+		//Verifica colisao entre projeteis e obstaculos
+
+	for(int k = 0; k < ListaProjeteis.size(); k++)
+	{
+
+		for(int i = 0; i < listaObstaculos->getTam(); i++)
+		{
+			Entidades::Entidade* ent1 = listaObstaculos->operator[](i);
+			for(int j = 0; j < ListaProjeteis[k]->size(); j++)
+			{	
+				Entidades::Entidade* ent2 = ListaProjeteis[k]->at(j);
+
+				if (ent2->getCorpo().getGlobalBounds().intersects(ent1->getCorpo().getGlobalBounds())) 
+				{
+					ent2->colisao(ent1, sf::Vector2f(0,0));
+				}
+			}
+		}
+	}
+
+}
+
+void GerenciadorColisao::setProjetil(std::vector<Entidades::Projetil*> *lP)
+{
+	ListaProjeteis.push_back(lP);
 }

@@ -76,3 +76,15 @@ void Inimigo::atualizar()
 
 	tempoMover += pGG->getTempo();
 }
+
+void Inimigo::tomarDano(float dano) 
+{
+    vida -= dano;
+    std::cout << "Inimigo tomou dano. Vida restante: " << vida << std::endl;
+
+    if (vida <= 0.0f) 
+	{
+        poderemover = true;  // Marca o inimigo para remoção
+
+    }
+}

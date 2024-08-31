@@ -1,6 +1,7 @@
 #include "../include/Fases/Fase.h"
 #include "../include/Entidades/Personagens/Inimigos/Cogumelo.h"
 #include "../include/Entidades/Personagens/Inimigos/Perseguidor.h"
+#include "../include/Entidades/Personagens/Inimigos/Chefao.h"
 #include "../include/Entidades/Obstaculos/Plataforma.h"
 #include "../include/Entidades/Obstaculos/Slime.h"
 #include "../include/Entidades/Obstaculos/Espinho.h"
@@ -14,10 +15,8 @@ using namespace Inimigos;
 using namespace Jogadores;
 using namespace Obstaculos;
 
-int Fase::qtdCogu(0);
-int Fase::qtdEsp(0);
-
-Fase::Fase(const IDs::ID id) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), pGG->carregarTextura("./Assets/Fundo1.jpg")), numCogu(rand() % 3 + 3), numEsp(rand() % 3 + 3)
+Fase::Fase(const IDs::ID id) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), pGG->carregarTextura("./Assets/Fundo1.jpg")), numCogu(rand() % 3 + 3), numEsp(rand() % 3 + 3), qtdCogu(0),
+qtdEsp(0)
 {
 }
 
@@ -69,6 +68,18 @@ void Fase::criarPerseguidor(const sf::Vector2f pos)
 	}
 
 	listaInimigos.addEntidade(static_cast<Entidades::Entidade *>(perseguidor));
+}
+
+void Fase::criarChefao(const sf::Vector2f pos)
+{
+	Chefao *inimigo3 = new Entidades::Personagens::Inimigos::Chefao(pos, sf::Vector2f(75.f, 45.f));
+
+	if (!inimigo3)
+	{
+		std::cout << "Nao foi possivel criar o inimigo" << std::endl;
+	}
+
+	listaInimigos.addEntidade(static_cast<Entidades::Entidade *>(inimigo3));
 }
 
 void Fase::criarPlataforma(const sf::Vector2f pos)
@@ -139,40 +150,11 @@ void Fase::criarLava(const sf::Vector2f pos)
 	listaObstaculos.addEntidade(static_cast<Entidades::Entidade *>(lava1));
 }
 
-/*void Fase::criarJogador(const sf::Vector2f pos)
-{
-
-		Entidades::Personagens::Jogadores::Jogador *jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.0f, 50.0f));
-
-		int numJogador = jogador->getNum();
-		if (jogador->getNum() == 0 || jogador->getNum() == 2)
-		{
-
-			Observadores::ObservadorJogador *obsJ = new Observadores::ObservadorJogador(jogador);
-			pInputs->incluir(static_cast<Observadores::Observador *>(obsJ));
-			Perseguidor::setJogador(jogador);
-		}
-		if (jogador->getNum() == 1 || jogador->getNum() == 3)
-		{
-			if (!jogador)
-			{
-				std::cout << "Nao foi possivel criar o jogador" << std::endl;
-				exit(1);
-			}
-			Observadores::ObservadorJogador *obsJ2 = new Observadores::ObservadorJogador(jogador);
-			obsJ2->setTeclas("Up", "Left", "Right", "Down");
-			pInputs->incluir(static_cast<Observadores::Observador *>(obsJ2));
-			Perseguidor::setJogador(jogador);
-			
-		}
-}*/
-
-
 void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 {
 	switch (letra)
 	{
-	case ('a'):
+	case ('c'):
 	{
 		criarCogumelo(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 	}
@@ -181,6 +163,12 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 	case ('p'):
 	{
 		criarPerseguidor(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+	}
+	break;
+
+	case ('C'):
+	{
+		criarChefao(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 	}
 	break;
 
