@@ -1,11 +1,13 @@
 #include "../include/Entidades/Personagens/Personagem.h"
+
 using namespace Jogo;
 using namespace Entidades;
 using namespace Personagens;
 using namespace sf;
 
 Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id) :
-    Entidade(pos, tam, id), velFinal(vel, 0.0f), velMax(vel), andando(false), paraEsquerda(false), dt(0.0f), animacao(&corpo), vida(VIDA)
+    Entidade(pos, tam, id), velFinal(vel, 0.0f), velMax(vel), andando(false), paraEsquerda(false), dt(0.0f), animacao(&corpo), vida(VIDA), 
+	atacando(false)
 {
 }
 
@@ -66,4 +68,19 @@ void Personagem::setVelFinal(const Vector2f velFinal)
 const float Personagem::getVida() const
 {
 	return vida;
+}
+
+const bool Personagem::getMorrer() const
+{
+	return (vida <= 0.0f ? true : false);
+}
+
+const bool Personagem::getParaEsquerda() const
+{
+	return paraEsquerda;
+}
+
+bool Personagem::estaCaindo() const 
+{
+    return velFinal.y > 0.0f;
 }

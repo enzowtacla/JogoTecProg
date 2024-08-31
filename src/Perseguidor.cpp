@@ -107,11 +107,11 @@ void Perseguidor::atualizarAnimacao()
 	}
 }
 
-void Perseguidor::colisao(Entidade *outra, sf::Vector2f ds)
+void Perseguidor::colisao(Entidade* outra, sf::Vector2f ds)
 {
-	if (outra->getId() == IDs::ID::jogador)
+	if(outra->getId() == IDs::ID::jogador)
 	{
-		cabeciar(static_cast<Personagens::Personagem *>(outra));
+		cabeciar(static_cast<Personagens::Personagem*>(outra));
 	}
 }
 

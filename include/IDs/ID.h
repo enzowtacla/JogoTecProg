@@ -16,6 +16,7 @@ namespace IDs
 		espinho,//9
 		slime,//10
 		plataforma, //11
-		lava //12
+		lava, //12
+		projetil //13
 	};
 }

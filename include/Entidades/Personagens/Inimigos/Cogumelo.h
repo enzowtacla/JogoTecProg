@@ -3,6 +3,7 @@
 #include "Inimigo.h"
 
 #define DANO 0.01f
+#define VIDA_COGU 50.0f
 
 namespace Jogo
 {

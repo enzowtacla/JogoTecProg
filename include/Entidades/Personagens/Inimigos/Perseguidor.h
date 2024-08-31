@@ -5,6 +5,7 @@
 #define ALCANCE_Y 200.0f
 #define EMPURRAO 75.0f
 #define CABECADA 0.05f
+#define TOMAR_DANO 25.0f
 
 namespace Jogo
 {

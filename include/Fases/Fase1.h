@@ -20,7 +20,7 @@ namespace Jogo
 			void criarPerseguidor(const sf::Vector2f pos);
 			void criarJogador(const sf::Vector2f pos);
 			void criarSlime(const sf::Vector2f pos);
-			//void criarChefao(const sf::Vector2f pos);
+			void criarChefao(const sf::Vector2f pos);
 			//void criarLava(const sf::Vector2f pos);
 		};
 	}

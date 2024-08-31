@@ -8,14 +8,18 @@ using namespace Inimigos;
 Entidades::Personagens::Jogadores::Jogador *Chefao::pJogador = nullptr;
 Entidades::Personagens::Jogadores::Jogador *Chefao::pJogador2 = nullptr;
 
-Chefao::Chefao (const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, IDs::ID::chefao), forcaAtaque(DANAR)
+Chefao::Chefao (const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, IDs::ID::chefao), forcaAtaque(DANAR), delayAtaque(2.0f), tempoUltimoAtaque(0.0f)
 {
     corpo.setFillColor(Color::Yellow);
+    void inicializa();
 }
 
 Chefao::~Chefao()
 {
-
+    for (auto projetil : projeteis) {
+        delete projetil;
+    }
+    projeteis.clear();
 }
 
 void Chefao::setJogador(Entidades::Personagens::Jogadores::Jogador *j)
@@ -28,18 +32,20 @@ void Chefao::setJogador2(Entidades::Personagens::Jogadores::Jogador *j)
 	pJogador2 = j;
 }
 
-void Chefao::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
+void Chefao::atiraJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo) 
 {
-	if (posJogador.x - posInimigo.x > 0.f)
-	{
-		paraEsquerda = false;
-		andar(paraEsquerda);
-	}
-	else
-	{
-		paraEsquerda = true;
-		andar(paraEsquerda);
-	}
+    auto agora = std::chrono::steady_clock::now();
+    std::chrono::duration<float> duracao = agora - ultimoAtaque;
+    if (duracao.count() >= delayAtaque) {
+        sf::Vector2f direcao = posJogador - posInimigo;
+        float magnitude = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
+        direcao /= magnitude;
+
+        Projetil* novoProjetil = new Projetil(posInimigo, sf::Vector2f(20.0f, 20.0f), direcao, 0.5f, 8.0f, 1000.0f);
+        projeteis.push_back(novoProjetil);
+
+        ultimoAtaque = agora; // Reset do tempo do último ataque
+    }
 }
 
 void Chefao::moveInimigo()
@@ -55,11 +61,11 @@ void Chefao::moveInimigo()
         if (dist1 <= ALCANCE_X && dist1 <= ALCANCE_Y &&
             (dist1 < dist2 || dist2 > ALCANCE_X || dist2 > ALCANCE_Y))
         {
-            persegueJogador(posJogador1, posInimigo);
+            atiraJogador(posJogador1, posInimigo);
         }
         else if (dist2 <= ALCANCE_X && dist2 <= ALCANCE_Y)
         {
-            persegueJogador(posJogador2, posInimigo);
+            atiraJogador(posJogador2, posInimigo);
         }
         else
         {
@@ -70,13 +76,13 @@ void Chefao::moveInimigo()
     {
         sf::Vector2f posJogador1 = pJogador->getCorpo().getPosition();
         sf::Vector2f posInimigo = corpo.getPosition();
-        persegueJogador(posJogador1, posInimigo);
+        atiraJogador(posJogador1, posInimigo);
     }
     else if (pJogador2->getVivo()) 
     {
         sf::Vector2f posJogador2 = pJogador2->getCorpo().getPosition();
         sf::Vector2f posInimigo = corpo.getPosition();
-        persegueJogador(posJogador2, posInimigo);
+        atiraJogador(posJogador2, posInimigo);
     }
     else
     {
@@ -88,17 +94,69 @@ void Chefao::colisao(Entidade *outra, sf::Vector2f ds)
 {
 	if (outra->getId() == IDs::ID::jogador)
 	{
-		//(static_cast<Personagens::Personagem *>(outra));
+		
 	}
 }
 
-/*
-void Chefao:: (Personagem* pPersonagem)
+void Chefao::atualizarAnimacao()
 {
-	if(pPersonagem){
-		Personagens::Jogadores::Jogador* pJogador = static_cast<Personagens::Jogadores::Jogador*>(pPersonagem);
-		pJogador->tomarDano(forcaAtaque);
-		pJogador->knockBack(EMPURRAO);
+	if (moveAleatorio == 0)
+	{
+		paraEsquerda = false;
+	}
+	else
+	{
+		paraEsquerda = true;
 	}
 }
-*/
+
+void Chefao::atualizaProjeteis()
+{
+    for (int i = 0; i < projeteis.size(); i++)
+    {
+        if (projeteis.at(i) && projeteis.at(i)->getAtivo())
+        {
+            projeteis.at(i)->atualizar();
+
+            if (pJogador && pJogador->getCorpo().getGlobalBounds().intersects(projeteis.at(i)->getCorpo().getGlobalBounds()))
+            {
+                projeteis.at(i)->setAtivo(false);
+                pJogador->tomarDano(projeteis.at(i)->getDano());
+            }
+
+            if (pJogador2 && pJogador2->getCorpo().getGlobalBounds().intersects(projeteis.at(i)->getCorpo().getGlobalBounds()))
+            {
+                projeteis.at(i)->setAtivo(false);
+                pJogador2->tomarDano(projeteis.at(i)->getDano());
+            }
+        }
+    }
+}
+
+
+void Chefao::atualizar()
+{
+    if(getVida() <= 0.f){
+		poderemover = true;
+	}
+	moveInimigo();
+    atualizaProjeteis();
+	atualizarPosicao();
+
+	tempoMover += pGG->getTempo();
+}
+
+void Chefao::desenhar()
+{
+    pGG->desenhaElementos(corpo);
+    for (int i = 0; i < projeteis.size(); i++)
+    {   
+        if(projeteis[i]->getAtivo())
+            projeteis[i]->desenhar();
+    }
+}
+
+std::vector<Entidades::Projetil*>* Chefao::getListaProjetil()
+{
+    return &projeteis;
+}

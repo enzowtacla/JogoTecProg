@@ -13,6 +13,7 @@ Cogumelo::Cogumelo(const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, I
 	corpo.setFillColor(Color::Red);
 
 	inicializa();
+	vida = VIDA_COGU;
 }
 
 Cogumelo::~Cogumelo()
@@ -60,5 +61,6 @@ void Cogumelo::envenenar(Personagem* pPersonagem)
 	if(pPersonagem){
 		Personagens::Jogadores::Jogador* pJogador = static_cast<Personagens::Jogadores::Jogador*>(pPersonagem);
 		pJogador->tomarDano(forçaVeneno);
+		pJogador->knockBack(0);
 	}
 }

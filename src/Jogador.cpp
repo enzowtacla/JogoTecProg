@@ -1,4 +1,5 @@
 #include "../include/Entidades/Personagens/Jogadores/Jogador.h"
+#include "../include/Entidades/Personagens/Inimigos/Inimigo.h"
 
 using namespace Jogo;
 using namespace Entidades;
@@ -84,7 +85,7 @@ void Jogador::tomarDano(float dano)
 
 void Jogador::colisao(Entidade* outra, sf::Vector2f ds)
 {
-    // Lógica de colisão aqui
+    
 }
 
 float Jogador::getVelocidadeMovimento() const
@@ -120,4 +121,14 @@ void Jogador::knockBack(float dist)
 const bool Jogador::getVivo() const
 {
     return (vida > 0.f);
+}
+
+void Jogador::atacar() 
+{
+    
+}
+
+float Jogador::getForcaDano() const 
+{
+    return DANO_JOGADOR; 
 }

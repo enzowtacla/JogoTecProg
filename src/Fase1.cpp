@@ -1,6 +1,6 @@
 #include "../include/Fases/Fase1.h"
 #include "../include/Entidades/Personagens/Inimigos/Perseguidor.h"
-//#include "../include/Entidades/Personagens/Inimigos/Chefao.h"
+#include "../include/Entidades/Personagens/Inimigos/Chefao.h"
 #include "../include/Entidades/Obstaculos/Slime.h"
 //#include "../include/Entidades/Obstaculos/Lava.h"
 
@@ -53,13 +53,17 @@ void Fase1::criarPerseguidor(const sf::Vector2f pos)
 {
 	if(qtdePers < numPers)
 	{
-		Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
+		//Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(52.f, 34.f));
+		Chefao* chefao = new Entidades::Personagens::Inimigos::Chefao(pos, sf::Vector2f(75.f, 45.f));
+		colisor.setProjetil(chefao->getListaProjetil());
 
-		if (!perseguidor) {
+		if (!chefao) {
 			std::cout << "Nao foi possivel criar o inimigo" << std::endl;
 		}
 
-		listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
+		//listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
+		listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(chefao));
+
 		qtdePers++;
 	}
 	else 
@@ -91,7 +95,8 @@ void Fase1::criarJogador(const sf::Vector2f pos)
 		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
 
 		pEventos->setJogador(jogador);
-		Perseguidor::setJogador(jogador);
+		Chefao::setJogador(jogador);
+		//Perseguidor::setJogador(jogador);
 	}
 	else
 	{
@@ -102,7 +107,8 @@ void Fase1::criarJogador(const sf::Vector2f pos)
 		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
 
 		pEventos->setJogador2(jogador);
-		Perseguidor::setJogador2(jogador);
+		Chefao::setJogador2(jogador);
+		//Perseguidor::setJogador2(jogador);
 	}
 }
 
@@ -137,17 +143,19 @@ void Fase1::criarSlime(const sf::Vector2f pos)
 
 }
 
-/*
+
 void Fase1::criarChefao(const sf::Vector2f pos)
 {
 	Chefao* chefao = new Entidades::Personagens::Inimigos::Chefao(pos, sf::Vector2f(75.f, 45.f));
-		if (!chefao)
-		{
+
+	if (!chefao)
+	{
 			std::cout << "Nao foi possivel criar o inimigo" << std::endl;
-		}
-		listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(chefao));
+	}
+
+	listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(chefao));
 }
-*/
+
 
 /*
 void Fase1::criarLava(const sf::Vector2f pos)

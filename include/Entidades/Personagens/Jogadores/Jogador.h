@@ -5,6 +5,8 @@
 
 #define VELOCIDADE_JOGADOR_X 200.0f
 #define TAMANHO_PULO 120.f
+#define DANO_JOGADOR 25.0f
+#define DANAR_JOGADOR 0.01f
 
 using namespace sf;
 
@@ -46,6 +48,8 @@ namespace Jogo
                     void setVelocidadeMovimento(float velocidade);
                     void knockBack(float dist);
                     const bool getVivo() const;
+                    void atacar();
+                    float getForcaDano() const;
                 };
             }
         }

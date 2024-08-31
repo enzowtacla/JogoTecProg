@@ -1,7 +1,7 @@
 #include "../include/Fases/Fase.h"
 #include "../include/Entidades/Personagens/Inimigos/Cogumelo.h"
 #include "../include/Entidades/Personagens/Inimigos/Perseguidor.h"
-//#include "../include/Entidades/Personagens/Inimigos/Chefao.h"
+#include "../include/Entidades/Personagens/Inimigos/Chefao.h"
 #include "../include/Entidades/Obstaculos/Plataforma.h"
 #include "../include/Entidades/Obstaculos/Slime.h"
 #include "../include/Entidades/Obstaculos/Espinho.h"
@@ -59,7 +59,7 @@ void Fase::criarPerseguidor(const sf::Vector2f pos)
 
 }
 
-/*
+
 void Fase::criarChefao(const sf::Vector2f pos)
 {
 	Chefao* inimigo3 = new Entidades::Personagens::Inimigos::Chefao(pos, sf::Vector2f(75.f, 45.f));
@@ -70,7 +70,7 @@ void Fase::criarChefao(const sf::Vector2f pos)
 
 	listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(inimigo3));
 }
-*/
+
 void Fase::criarObstaculo(const sf::Vector2f pos)
 {
 	Entidades::Obstaculos::Plataforma* plataforma1 = new Entidades::Obstaculos::Plataforma(pos, Vector2f(350.0f, 50.0f));
@@ -101,7 +101,7 @@ void Fase::criarEspinho(const sf::Vector2f pos)
 
 
 	if (!espinho1) {
-		std::cout << "Nao foi possivel criar o slime" << std::endl;
+		std::cout << "Nao foi possivel criar o espinho" << std::endl;
 	}
 
 	listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(espinho1));
@@ -138,7 +138,7 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 
 		case('c'):
 		{
-			//criarChefao(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+			criarChefao(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 		}
 		break;
 

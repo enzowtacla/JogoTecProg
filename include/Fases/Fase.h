@@ -36,7 +36,7 @@ namespace Jogo
 			void criarCogumelo(const sf::Vector2f pos);
 			virtual void criarPerseguidor(const sf::Vector2f pos)= 0;
 			virtual void criarJogador(const sf::Vector2f pos) = 0;
-			//virtual void criarChefao(const sf::Vector2f pos) = 0;
+			virtual void criarChefao(const sf::Vector2f pos) = 0;
 			void criarObstaculo(const sf::Vector2f pos);
 			virtual void criarSlime(const sf::Vector2f pos) = 0;
 			void criarEspinho(const sf::Vector2f pos);

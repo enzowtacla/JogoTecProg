@@ -54,6 +54,12 @@ void GerenciadorEventos::verificaTeclaPressionada(const sf::Keyboard::Key tecla)
 	else if (tecla == sf::Keyboard::Up) {
 		pJogador2->pular();
 	}
+	else if (tecla == sf::Keyboard::S) {
+		pJogador->atacar();
+	}
+	else if (tecla == sf::Keyboard::Down) {
+		pJogador2->atacar();
+	}
 }
 
 void GerenciadorEventos::verificaTeclaSolta(const sf::Keyboard::Key tecla)

@@ -19,7 +19,8 @@ void Plataforma::colisao(Entidade* outra, sf::Vector2f ds)
 {
 	if (outra->getId() == IDs::ID::jogador ||
 	outra->getId() == IDs::ID::cogumelo ||
-	outra->getId() == IDs::ID::perseguidor
+	outra->getId() == IDs::ID::perseguidor ||
+    outra->getId() == IDs::ID::chefao
 	)
 	{
 		colisaoObstaculo(ds, static_cast<Personagens::Personagem*>(outra));
