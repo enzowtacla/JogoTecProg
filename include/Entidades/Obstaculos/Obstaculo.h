@@ -5,7 +5,6 @@
 #include "../Personagens/Inimigos/Inimigo.h"
 
 #define EMPUXO -800.f
-#define VELOCIDADE 0.f
 
 using namespace sf;
 

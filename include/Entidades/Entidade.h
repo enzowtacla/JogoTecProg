@@ -30,6 +30,7 @@ namespace Jogo
 			const bool getRemover() const;
 			virtual void desenhar();
 			virtual void colisao(Entidade* outra, sf::Vector2f ds = sf::Vector2f(0.f, 0.f)) = 0;
+			void setRemover(bool remover);
 		};
 	}
 }

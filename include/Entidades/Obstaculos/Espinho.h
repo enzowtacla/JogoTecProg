@@ -4,6 +4,7 @@
 
 #define DANO_ESPINHO_PADRAO 0.10f
 #define CAMINHO_TEXTURA_ESPINHO ""
+#define VELOCIDADE_ESPINHO 0.f
 
 namespace Jogo
 {

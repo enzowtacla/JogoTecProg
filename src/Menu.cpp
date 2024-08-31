@@ -4,6 +4,7 @@
 using namespace Jogo;
 using namespace Menus;
 
+
 Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false), numFase(0), numJogadores(0)
 {
     largura = pGG->getTamJanela().x;

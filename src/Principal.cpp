@@ -1,5 +1,7 @@
 #include "../include/Principal.h"
 using namespace sf;
+using namespace Jogo;
+using namespace Fases;
 
 Jogo::Principal::Principal() :
 	pGG(pGG->getGrafico()), pEventos(pEventos->getGerenciadorEventos()), fase1(nullptr), fase2(nullptr), menu(nullptr), pInputs(pInputs->getGerenciadorInputs()), numInimigos(0)
@@ -89,11 +91,9 @@ void Jogo::Principal::Executar()
 		else {
 			if(menu->getNumFase() == 1){
 				fase1->executar();
-				numInimigos = fase1->getNumInimigos();
-			}
-			else if(numInimigos == 0){
-				std::cout << "Entrou aq" << std::endl;
-				fase2->executar();
+				if(fase1->getNumInimigos() == 0){
+					fase2->executar();
+				}
 			}
 			else if(menu->getNumFase() == 2){
 				fase2->executar();

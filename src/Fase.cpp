@@ -17,10 +17,8 @@ using namespace Obstaculos;
 int Fase::qtdCogu(0);
 int Fase::qtdEsp(0);
 
-
-Fase::Fase(const IDs::ID id) :Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f),pGG->carregarTextura("./Assets/Fundo1.jpg")), numCogu(rand()%3 + 3), numEsp(rand()%3 + 3)
+Fase::Fase(const IDs::ID id) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), pGG->carregarTextura("./Assets/Fundo1.jpg")), numCogu(rand() % 3 + 3), numEsp(rand() % 3 + 3)
 {
-
 }
 
 Fase::~Fase()
@@ -32,94 +30,97 @@ Fase::~Fase()
 
 void Fase::criarCogumelo(const sf::Vector2f pos)
 {
-	if(qtdCogu < numCogu)
+	if (qtdCogu < numCogu)
 	{
-		Cogumelo* cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(50.f, 50.f));
+		Cogumelo *cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(50.f, 50.f));
 
-		if (!cogumelo){
+		if (!cogumelo)
+		{
 			std::cout << "Nao foi possivel criar o inimigo" << std::endl;
 		}
 
-		listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(cogumelo));
+		listaInimigos.addEntidade(static_cast<Entidades::Entidade *>(cogumelo));
 		qtdCogu++;
 	}
-	else{
-		if(rand()%100 < 25)
+	else
+	{
+		if (rand() % 100 < 25)
 		{
-			Cogumelo* cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(50.f, 50.f));
+			Cogumelo *cogumelo = new Entidades::Personagens::Inimigos::Cogumelo(pos, sf::Vector2f(50.f, 50.f));
 
-			if (!cogumelo){
+			if (!cogumelo)
+			{
 				std::cout << "Nao foi possivel criar o inimigo" << std::endl;
 			}
 
-			listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(cogumelo));
+			listaInimigos.addEntidade(static_cast<Entidades::Entidade *>(cogumelo));
 			qtdCogu++;
 		}
 	}
-
 }
 
 void Fase::criarPerseguidor(const sf::Vector2f pos)
 {
-	Perseguidor* perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(50.f, 50.f));
+	Perseguidor *perseguidor = new Entidades::Personagens::Inimigos::Perseguidor(pos, sf::Vector2f(50.f, 50.f));
 
-	if (!perseguidor) {
+	if (!perseguidor)
+	{
 		std::cout << "Nao foi possivel criar o inimigo" << std::endl;
 	}
 
-	listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
-
+	listaInimigos.addEntidade(static_cast<Entidades::Entidade *>(perseguidor));
 }
 
 void Fase::criarPlataforma(const sf::Vector2f pos)
 {
-	Entidades::Obstaculos::Plataforma* plataforma = new Entidades::Obstaculos::Plataforma(pos, Vector2f(350.0f, 50.0f));
+	Entidades::Obstaculos::Plataforma *plataforma = new Entidades::Obstaculos::Plataforma(pos, Vector2f(350.0f, 50.0f));
 
-
-	if (!plataforma) {
+	if (!plataforma)
+	{
 		std::cout << "Nao foi possivel criar a plataforma" << std::endl;
 	}
 
-	listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(plataforma));
+	listaObstaculos.addEntidade(static_cast<Entidades::Entidade *>(plataforma));
 }
 
 void Fase::criarSlime(const sf::Vector2f pos)
 {
-	Entidades::Obstaculos::Slime* slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
+	Entidades::Obstaculos::Slime *slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
 
-
-	if (!slime) {
+	if (!slime)
+	{
 		std::cout << "Nao foi possivel criar o slime" << std::endl;
 	}
 
-	listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(slime));
+	listaObstaculos.addEntidade(static_cast<Entidades::Entidade *>(slime));
 }
 
 void Fase::criarEspinho(const sf::Vector2f pos)
 {
-	if(qtdEsp < numEsp)
+	if (qtdEsp < numEsp)
 	{
-		Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(80.0f, 50.0f));
+		Entidades::Obstaculos::Espinho *espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(80.0f, 50.0f));
 
-
-		if (!espinho) {
+		if (!espinho)
+		{
 			std::cout << "Nao foi possivel criar o slime" << std::endl;
 		}
 
-		listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(espinho));
+		listaObstaculos.addEntidade(static_cast<Entidades::Entidade *>(espinho));
 		qtdEsp++;
 	}
-	else{
-		if(rand()%100 < 25)
+	else
+	{
+		if (rand() % 100 < 25)
 		{
-			Entidades::Obstaculos::Espinho* espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(80.0f, 50.0f));
+			Entidades::Obstaculos::Espinho *espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(80.0f, 50.0f));
 
-
-			if (!espinho) {
+			if (!espinho)
+			{
 				std::cout << "Nao foi possivel criar o slime" << std::endl;
 			}
 
-			listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(espinho));
+			listaObstaculos.addEntidade(static_cast<Entidades::Entidade *>(espinho));
 			qtdEsp++;
 		}
 	}
@@ -127,68 +128,97 @@ void Fase::criarEspinho(const sf::Vector2f pos)
 
 void Fase::criarLava(const sf::Vector2f pos)
 {
-	Entidades::Obstaculos::Lava* lava1 = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
+	Entidades::Obstaculos::Lava *lava1 = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
 
-
-	if (!lava1) {
+	if (!lava1)
+	{
 		std::cout << "Nao foi possivel criar a lava" << std::endl;
+		exit(1);
 	}
 
-	listaObstaculos.addEntidade(static_cast<Entidades::Entidade*>(lava1));
+	listaObstaculos.addEntidade(static_cast<Entidades::Entidade *>(lava1));
 }
+
+/*void Fase::criarJogador(const sf::Vector2f pos)
+{
+
+		Entidades::Personagens::Jogadores::Jogador *jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.0f, 50.0f));
+
+		int numJogador = jogador->getNum();
+		if (jogador->getNum() == 0 || jogador->getNum() == 2)
+		{
+
+			Observadores::ObservadorJogador *obsJ = new Observadores::ObservadorJogador(jogador);
+			pInputs->incluir(static_cast<Observadores::Observador *>(obsJ));
+			Perseguidor::setJogador(jogador);
+		}
+		if (jogador->getNum() == 1 || jogador->getNum() == 3)
+		{
+			if (!jogador)
+			{
+				std::cout << "Nao foi possivel criar o jogador" << std::endl;
+				exit(1);
+			}
+			Observadores::ObservadorJogador *obsJ2 = new Observadores::ObservadorJogador(jogador);
+			obsJ2->setTeclas("Up", "Left", "Right", "Down");
+			pInputs->incluir(static_cast<Observadores::Observador *>(obsJ2));
+			Perseguidor::setJogador(jogador);
+			
+		}
+}*/
+
 
 void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 {
 	switch (letra)
 	{
-		case('a'):
-		{
-			criarCogumelo(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
-		}
-		break;
-
-		case('p'):
-		{
-			criarPerseguidor(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
-		}
-		break;
-
-		case('o'):
-		{
-			criarPlataforma(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
-		}
-		break;
-
-		case('j'):
-		{
-			criarJogador(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
-		}
-		break;
-
-		case('s'):
-		{
-			criarSlime(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
-		}
-		break;
-
-		case('e'):
-		{
-			criarEspinho(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
-		}
-		break;
-
-		case('L'):
-		{
-			criarLava(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
-		}
-		break;
+	case ('a'):
+	{
+		criarCogumelo(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 	}
+	break;
 
+	case ('p'):
+	{
+		criarPerseguidor(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+	}
+	break;
+
+	case ('o'):
+	{
+		criarPlataforma(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+	}
+	break;
+
+	case ('s'):
+	{
+		criarSlime(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+	}
+	break;
+
+	case ('j'):
+	{
+		criarJogador(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+	}
+	break;
+
+	case ('e'):
+	{
+		criarEspinho(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+	}
+	break;
+
+	case ('L'):
+	{
+		criarLava(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+	}
+	break;
+	}
 }
 
 void Fase::desenhar()
 {
-	if(listaJogadores.getTam() == 0)
+	if (listaJogadores.getTam() == 0)
 	{
 		pGG->fecharJanela();
 	}
@@ -196,7 +226,6 @@ void Fase::desenhar()
 	listaJogadores.executar();
 	listaInimigos.executar();
 	listaObstaculos.executar();
-
 }
 
 void Fase::executar()
@@ -208,6 +237,5 @@ void Fase::executar()
 
 int Fase::getNumInimigos()
 {
-	//std::cout << " " << listaInimigos.getTam() << std::endl;
 	return ((int)listaInimigos.getTam());
 }

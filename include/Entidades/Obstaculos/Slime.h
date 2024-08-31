@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Obstaculos/Obstaculo.h"
+#define VELOCIDADE_SLIME 0.f
 
 namespace Jogo
 {

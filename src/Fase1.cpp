@@ -47,38 +47,7 @@ void Fase1::criarMapa(const std::string& arquivoTxt)
 	arquivo.close();
 }
 
-void Fase1::criarJogador(const sf::Vector2f pos)
-{
-	
-	Entidades::Personagens::Jogadores::Jogador* jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.f, 50.f));
 
-	if(jogador->getNum() == 0)
-	{
-		if (!jogador) {
-			std::cout << "Nao foi possivel criar o jogador 1" << std::endl;
-		}
-
-		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
-
-		Observadores::ObservadorJogador* obsJ1 = new Observadores::ObservadorJogador(jogador);
-		//obsJ1->setTeclas("W", "A", "D", "S");
-		pInputs->incluir(static_cast<Observadores::Observador*>(obsJ1));
-		Perseguidor::setJogador(jogador);
-	}
-	else
-	{
-		if (!jogador) {
-			std::cout << "Nao foi possivel criar o jogador 1" << std::endl;
-		}
-
-		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
-
-		Observadores::ObservadorJogador* obsJ2 = new Observadores::ObservadorJogador(jogador);
-		obsJ2->setTeclas("Up", "Left", "Right", "Down");
-		pInputs->incluir(static_cast<Observadores::Observador*>(obsJ2));
-		Perseguidor::setJogador2(jogador);
-	}
-}
 
 void Fase1::criarSlime(const sf::Vector2f pos)
 {
@@ -133,5 +102,38 @@ void Fase1::criarPerseguidor(const sf::Vector2f pos)
 			listaInimigos.addEntidade(static_cast<Entidades::Entidade*>(perseguidor));
 			qtdePers++;
 		}
+	}
+}
+
+void Fase1::criarJogador(const sf::Vector2f pos)
+{
+	
+	Entidades::Personagens::Jogadores::Jogador* jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.f, 50.f));
+
+	if(jogador->getNum() == 0)
+	{
+		if (!jogador) {
+			std::cout << "Nao foi possivel criar o jogador 1" << std::endl;
+		}
+
+		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
+
+		Observadores::ObservadorJogador* obsJ1 = new Observadores::ObservadorJogador(jogador);
+		//obsJ1->setTeclas("W", "A", "D", "S");
+		pInputs->incluir(static_cast<Observadores::Observador*>(obsJ1));
+		Perseguidor::setJogador(jogador);
+	}
+	else
+	{
+		if (!jogador) {
+			std::cout << "Nao foi possivel criar o jogador 1" << std::endl;
+		}
+
+		listaJogadores.addEntidade(static_cast<Entidades::Entidade*>(jogador));
+
+		Observadores::ObservadorJogador* obsJ2 = new Observadores::ObservadorJogador(jogador);
+		obsJ2->setTeclas("Up", "Left", "Right", "Down");
+		pInputs->incluir(static_cast<Observadores::Observador*>(obsJ2));
+		Perseguidor::setJogador2(jogador);
 	}
 }

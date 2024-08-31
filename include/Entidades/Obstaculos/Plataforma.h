@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Obstaculo.h"
+#define VELOCIDADE_PLATAFORMA 0.f
 
 namespace Jogo
 {

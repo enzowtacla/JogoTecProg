@@ -8,7 +8,7 @@ namespace Jogo {
         namespace Obstaculos {
 
             Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam) :
-                Obstaculo(pos, tam, VELOCIDADE,IDs::ID::espinho), dano(DANO_ESPINHO_PADRAO)
+                Obstaculo(pos, tam, VELOCIDADE_ESPINHO,IDs::ID::espinho), dano(DANO_ESPINHO_PADRAO)
             {
                 //inicializarAnimacao();
                 corpo = sf::RectangleShape(tam);

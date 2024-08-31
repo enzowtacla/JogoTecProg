@@ -5,6 +5,7 @@
 
 #define DANO_LAVA 0.07f
 #define INTERVALO_DANOS 2.5f
+#define VELOCIDADE_LAVA 0.f
 
 namespace Jogo
 {

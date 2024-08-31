@@ -9,7 +9,7 @@ using namespace Obstaculos;
 using namespace sf;
 
 Slime::Slime(const sf::Vector2f pos, const sf::Vector2f tam)
-    : Obstaculo(pos, tam, VELOCIDADE,IDs::ID::slime), pegajosidadeMovimento(0.4f)
+    : Obstaculo(pos, tam, VELOCIDADE_SLIME,IDs::ID::slime), pegajosidadeMovimento(0.4f)
 {
     corpo = sf::RectangleShape(tam);
     corpo.setPosition(pos);

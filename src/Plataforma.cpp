@@ -4,7 +4,7 @@ using namespace Jogo;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(const Vector2f pos, const Vector2f tam) :Obstaculo(pos, tam, VELOCIDADE,IDs::ID::plataforma)
+Plataforma::Plataforma(const Vector2f pos, const Vector2f tam) :Obstaculo(pos, tam, VELOCIDADE_PLATAFORMA,IDs::ID::plataforma)
 {
 	textura = pGG->carregarTextura("./Assets/plataforma.png");
 	corpo.setTexture(&textura);

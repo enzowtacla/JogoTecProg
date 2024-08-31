@@ -51,3 +51,8 @@ void Entidade::desenhar()
 {
 	pGG->desenhaElementos(corpo);
 }
+
+void Entidade::setRemover(bool remover)
+{
+	poderemover = remover;
+}
