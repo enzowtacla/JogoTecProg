@@ -4,7 +4,7 @@
 #define ALCANCE_X 200.0f
 #define ALCANCE_Y 200.0f
 #define EMPURRAO 75.0f
-#define CABECADA 10.f
+#define CABECADA 0.2f
 
 namespace Jogo
 {
@@ -21,6 +21,7 @@ namespace Jogo
 					static Entidades::Personagens::Jogadores::Jogador* pJogador2;
 					float forcaEmpurrao;
 					float forcaCabecada;
+					bool perseguindo;
 					void inicializa();
 				public:
 					Perseguidor(const Vector2f pos, const Vector2f tam);

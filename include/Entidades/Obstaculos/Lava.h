@@ -30,7 +30,6 @@ namespace Jogo
                 void atualizar();
                 void colisao(Entidade* outra, sf::Vector2f ds) override;
                 void aplicarDanoContinuo(Personagens::Jogadores::Jogador* pJogador, sf::Clock& relogio, int& danosRestantes);
-                //void atualizarPosicao();
             };
         }
     }

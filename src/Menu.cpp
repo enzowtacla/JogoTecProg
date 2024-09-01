@@ -135,3 +135,8 @@ const int Menu::getNumJogadores() const
 {
     return numJogadores;
 }
+
+void Menu::setNumFase(int nf)
+{
+    numFase = nf;
+}

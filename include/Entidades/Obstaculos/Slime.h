@@ -12,7 +12,6 @@ namespace Jogo
             class Slime : public Obstaculo
             {
             private:
-                sf::Texture textura;
                 float pegajosidadeMovimento;
 
             public:

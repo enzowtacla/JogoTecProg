@@ -84,6 +84,7 @@ void GerenciadorColisao::executar()
 			}
 		}
 	}
+	
 
 	//Verifica colisão de inimigos com jogadores para dano
 

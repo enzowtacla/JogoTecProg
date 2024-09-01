@@ -14,7 +14,7 @@ using namespace Obstaculos;
 int FlorestaLava::qtdeChefao(0);
 int FlorestaLava::qtdeLavas(0);
 
-FlorestaLava::FlorestaLava() : Fase(IDs::ID::fase2, "Assets/florestaLava.png"), numChefao(rand() % 3 + 3), numLavas(rand() % 3 + 3)
+FlorestaLava::FlorestaLava() : Fase(IDs::ID::fase2, "Assets/florestaLava.png"), numChefao(rand() % 3 + 2), numLavas(rand() % 3 + 2)
 {
 }
 
@@ -53,7 +53,6 @@ void FlorestaLava::criarJogador(const sf::Vector2f pos)
 
 	if (jogador->getNum() == 2)
 	{
-		std::cout << "Jogador criado" << std::endl;
 		if (!jogador)
 		{
 			std::cout << "Nao foi possivel criar o jogador 1" << std::endl;
@@ -118,7 +117,7 @@ void FlorestaLava::criarLava(const sf::Vector2f pos)
 {
 	if (qtdeLavas < numLavas)
 	{
-		Lava *lava = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
+		Lava *lava = new Entidades::Obstaculos::Lava(pos, Vector2f(50.0f, 50.0f));
 		if (!lava)
 		{
 			std::cout << "Nao foi possivel criar a Lava" << std::endl;
@@ -130,7 +129,7 @@ void FlorestaLava::criarLava(const sf::Vector2f pos)
 	{
 		if (rand() % 100 < 25)
 		{
-			Lava *lava = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
+			Lava *lava = new Entidades::Obstaculos::Lava(pos, Vector2f(50.0f, 50.0f));
 			if (!lava)
 			{
 				std::cout << "Nao foi possivel criar a Lava" << std::endl;

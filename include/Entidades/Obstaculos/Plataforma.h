@@ -12,7 +12,7 @@ namespace Jogo
 			class Plataforma :public Obstaculo
 			{
 			private:
-				Texture textura;
+				
 				
 			public:
 				Plataforma(const Vector2f pos, const Vector2f tam);

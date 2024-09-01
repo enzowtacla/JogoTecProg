@@ -15,7 +15,7 @@ using namespace Inimigos;
 using namespace Jogadores;
 using namespace Obstaculos;
 
-Fase::Fase(const IDs::ID id, const char* caminhoTextura) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), caminhoTextura), numCogu(rand() % 3 + 3), numEsp(rand() % 3 + 3), qtdCogu(0),
+Fase::Fase(const IDs::ID id, const char* caminhoTextura) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), caminhoTextura), numCogu(rand() % 3 + 2), numEsp(rand() % 3 + 2), qtdCogu(0),
 qtdEsp(0), menu(menu->getMenu()), removeu(false)
 {
 }
@@ -96,7 +96,7 @@ void Fase::criarPlataforma(const sf::Vector2f pos)
 
 void Fase::criarSlime(const sf::Vector2f pos)
 {
-	Entidades::Obstaculos::Slime *slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
+	Entidades::Obstaculos::Slime *slime = new Entidades::Obstaculos::Slime(pos, Vector2f(50.0f, 35.0f));
 
 	if (!slime)
 	{
@@ -110,7 +110,7 @@ void Fase::criarEspinho(const sf::Vector2f pos)
 {
 	if (qtdEsp < numEsp)
 	{
-		Entidades::Obstaculos::Espinho *espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(80.0f, 50.0f));
+		Entidades::Obstaculos::Espinho *espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(50.0f, 50.0f));
 
 		if (!espinho)
 		{
@@ -124,7 +124,7 @@ void Fase::criarEspinho(const sf::Vector2f pos)
 	{
 		if (rand() % 100 < 25)
 		{
-			Entidades::Obstaculos::Espinho *espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(80.0f, 50.0f));
+			Entidades::Obstaculos::Espinho *espinho = new Entidades::Obstaculos::Espinho(pos, Vector2f(50.0f, 50.0f));
 
 			if (!espinho)
 			{
@@ -139,7 +139,7 @@ void Fase::criarEspinho(const sf::Vector2f pos)
 
 void Fase::criarLava(const sf::Vector2f pos)
 {
-	Entidades::Obstaculos::Lava *lava1 = new Entidades::Obstaculos::Lava(pos, Vector2f(110.0f, 25.0f));
+	Entidades::Obstaculos::Lava *lava1 = new Entidades::Obstaculos::Lava(pos, Vector2f(50.0f, 50.0f));
 
 	if (!lava1)
 	{

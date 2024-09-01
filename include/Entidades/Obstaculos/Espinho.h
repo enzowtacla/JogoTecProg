@@ -18,6 +18,8 @@ namespace Jogo
             class Espinho : public Obstaculo {
             private:
                 float dano;
+                float empurrar;
+                //Texture textura;
                 //void inicializarAnimacao();
 
             public:

@@ -20,7 +20,9 @@ Jogador::~Jogador()
 
 void Jogador::inicializa()
 {
-    // Inicialização de animações e outros recursos
+    //animacao.addAnimacao("./Assets/Anda.png", "ANDA", 12, 0.12f, sf::Vector2f(2, 2));
+    //animacao.addAnimacao("./Assets/Parado.png", "PARADO", 11, 0.12f, sf::Vector2f(2, 2));
+	//corpo.setOrigin(sf::Vector2f(tam.x / 2, tam.y / 2));
 }
 
 const RectangleShape Jogador::getCorpo()
@@ -34,7 +36,9 @@ void Jogador::atualizar()
     {
         poderemover = true;
     }
+    //atualizarAnimacao();
     atualizarPosicao();
+
 }
 
 void Jogador::desenhar()

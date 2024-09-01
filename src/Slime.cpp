@@ -11,9 +11,10 @@ using namespace sf;
 Slime::Slime(const sf::Vector2f pos, const sf::Vector2f tam)
     : Obstaculo(pos, tam, VELOCIDADE_SLIME,IDs::ID::slime), pegajosidadeMovimento(0.4f)
 {
-    corpo = sf::RectangleShape(tam);
-    corpo.setPosition(pos);
-    corpo.setFillColor(Color::Green);
+    textura = pGG->carregarTextura("Assets/slime.png");
+    //corpo = sf::RectangleShape(tam);
+    //corpo.setPosition(pos);
+    corpo.setTexture(&textura);
 }
 
 Slime::~Slime()

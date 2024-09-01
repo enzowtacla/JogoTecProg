@@ -22,14 +22,15 @@ Cogumelo::~Cogumelo()
 
 void Cogumelo::inicializa()
 {
-	/*animacao.addAnimacao("./Assets/CogumeloAndando.png", "ANDANDO", 16, 0.12f, sf::Vector2f(2, 2));
-	corpo.setOrigin(sf::Vector2f(tam.x / 2.5f, tam.y / 2.0f));*/
+	//animacao.addAnimacao("./Assets/CogumeloAndando.png", "ANDANDO", 16, 0.12f, sf::Vector2f(1, 1));
+	//corpo.setOrigin(sf::Vector2f(tam.x / 2, tam.y / 2));
 	
 }
 
 void Cogumelo::moveInimigo()
 {
 	atualizaMovimentoAleatorio();
+	//atualizarAnimacao();
 }
 
 void Cogumelo::atualizarAnimacao()
