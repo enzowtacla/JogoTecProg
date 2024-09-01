@@ -65,7 +65,7 @@ void Jogador::podePular()
 
 void Jogador::pular()
 {
-    if (noChao)
+    if (noChao && velFinal.y <= 0)
     {
         velFinal.y = -sqrt(2.f * GRAVIDADE * TAMANHO_PULO);
         noChao = false;
