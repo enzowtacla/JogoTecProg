@@ -15,7 +15,7 @@ using namespace Inimigos;
 using namespace Jogadores;
 using namespace Obstaculos;
 
-Fase::Fase(const IDs::ID id) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), pGG->carregarTextura("./Assets/Fundo1.jpg")), numCogu(rand() % 3 + 3), numEsp(rand() % 3 + 3), qtdCogu(0),
+Fase::Fase(const IDs::ID id, const char* caminhoTextura) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), caminhoTextura), numCogu(rand() % 3 + 3), numEsp(rand() % 3 + 3), qtdCogu(0),
 qtdEsp(0), menu(menu->getMenu()), removeu(false)
 {
 }

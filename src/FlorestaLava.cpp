@@ -14,7 +14,7 @@ using namespace Obstaculos;
 int FlorestaLava::qtdeChefao(0);
 int FlorestaLava::qtdeLavas(0);
 
-FlorestaLava::FlorestaLava() : Fase(IDs::ID::fase2), numChefao(rand() % 3 + 3), numLavas(rand() % 3 + 3)
+FlorestaLava::FlorestaLava() : Fase(IDs::ID::fase2, "Assets/florestaLava.png"), numChefao(rand() % 3 + 3), numLavas(rand() % 3 + 3)
 {
 }
 

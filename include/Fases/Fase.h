@@ -32,7 +32,7 @@ namespace Jogo
 			bool removeu;
 
 		public:
-			Fase(const IDs::ID id);
+			Fase(const IDs::ID id, const char* caminhoTextura);
 			~Fase();
 			virtual void criarMapa(const std::string& arquivoTxt) = 0;
 			void criarEntidade(char letra, const sf::Vector2i pos); //Método template
