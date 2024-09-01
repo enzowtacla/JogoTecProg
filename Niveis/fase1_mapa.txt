@@ -4,11 +4,11 @@
 
 
 
-
-j j     p c       p p 
-        soe  s    os
-        
-            p c p
-            o    e  
-       c     c    c   
-o    e o  s   oe  s o
+#                        #     
+# j j     p c       psp  # 
+#        soe  s   ###### #
+#                        #
+#            p c p       #
+#            o    e      #
+#       c     c    c     #
+##########################

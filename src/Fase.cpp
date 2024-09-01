@@ -84,7 +84,7 @@ void Fase::criarChefao(const sf::Vector2f pos)
 
 void Fase::criarPlataforma(const sf::Vector2f pos)
 {
-	Entidades::Obstaculos::Plataforma *plataforma = new Entidades::Obstaculos::Plataforma(pos, Vector2f(350.0f, 50.0f));
+	Entidades::Obstaculos::Plataforma *plataforma = new Entidades::Obstaculos::Plataforma(pos, Vector2f(50.0f, 50.0f));
 
 	if (!plataforma)
 	{
@@ -172,7 +172,7 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 	}
 	break;
 
-	case ('o'):
+	case ('#'):
 	{
 		criarPlataforma(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 	}
@@ -180,7 +180,7 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 
 	case ('s'):
 	{
-		criarSlime(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+		criarSlime(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 	}
 	break;
 
@@ -192,13 +192,13 @@ void Fase::criarEntidade(char letra, const sf::Vector2i pos)
 
 	case ('e'):
 	{
-		criarEspinho(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+		criarEspinho(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 	}
 	break;
 
 	case ('L'):
 	{
-		criarLava(sf::Vector2f(pos.x * 50.0f, pos.y * 49.0f));
+		criarLava(sf::Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 	}
 	break;
 	}

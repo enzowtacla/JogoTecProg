@@ -6,7 +6,7 @@ using namespace Obstaculos;
 
 Plataforma::Plataforma(const Vector2f pos, const Vector2f tam) :Obstaculo(pos, tam, VELOCIDADE_PLATAFORMA,IDs::ID::plataforma)
 {
-	textura = pGG->carregarTextura("./Assets/plataforma.png");
+	textura = pGG->carregarTextura("./Assets/plataforma2.png");
 	corpo.setTexture(&textura);
 }
 

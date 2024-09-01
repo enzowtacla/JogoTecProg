@@ -13,7 +13,7 @@ namespace Jogo
 			{
 			private:
 				Texture textura;
-
+				
 			public:
 				Plataforma(const Vector2f pos, const Vector2f tam);
 				~Plataforma();
