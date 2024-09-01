@@ -64,16 +64,3 @@ void ListaEntidade::executar()
 		}
 	}
 }
-
-/*void ListaEntidade::desenharEntidades()
-{
-	int tam = LEs.getTam();
-
-	Entidades::Entidade* aux = nullptr;
-
-	for (int i = 0; i < tam; i++)
-	{
-		aux = LEs.operator[](i);
-		aux->desenhar();
-	}
-}*/

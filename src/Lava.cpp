@@ -22,7 +22,7 @@ Lava::~Lava()
 
 void Lava::atualizar()
 {
-    gravidadeObstaculo();
+    atualizarPosicao();
     if (jogador1)
     {
         aplicarDanoContinuo(jogador1, relogio1, danosRestantes1);

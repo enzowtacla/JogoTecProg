@@ -26,6 +26,7 @@ namespace Jogo
                 void colisao(Entidade* outraEntidade, sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
                 void espetar(Personagens::Personagem* pPersonagem);
                 void atualizar();
+                //void atualizarPosicao();
                 //const std::string salvar();
             };
         }

@@ -1,4 +1,4 @@
-#include "../include/Fases/Fase1.h"
+#include "../include/Fases/FlorestaGosmenta.h"
 #include "../include/Entidades/Personagens/Inimigos/Perseguidor.h"
 #include "../include/Entidades/Obstaculos/Slime.h"
 
@@ -10,18 +10,18 @@ using namespace Inimigos;
 using namespace Jogadores;
 using namespace Obstaculos;
 
-int Fase1::qtdePers(0);
-int Fase1::qtdeSlimes(0);
+int FlorestaGosmenta::qtdePers(0);
+int FlorestaGosmenta::qtdeSlimes(0);
 
-Fase1::Fase1() : Fase(IDs::ID::fase1), numPers(rand() % 3 + 3), numSlimes(rand() % 3 + 3)
+FlorestaGosmenta::FlorestaGosmenta() : Fase(IDs::ID::fase1), numPers(rand() % 3 + 3), numSlimes(rand() % 3 + 3)
 {
 }
 
-Fase1::~Fase1()
+FlorestaGosmenta::~FlorestaGosmenta()
 {
 }
 
-void Fase1::criarMapa(const std::string &arquivoTxt)
+void FlorestaGosmenta::criarMapa(const std::string &arquivoTxt)
 {
 	std::ifstream arquivo(arquivoTxt);
 	std::string linha;
@@ -46,7 +46,7 @@ void Fase1::criarMapa(const std::string &arquivoTxt)
 	arquivo.close();
 }
 
-void Fase1::criarSlime(const sf::Vector2f pos)
+void FlorestaGosmenta::criarSlime(const sf::Vector2f pos)
 {
 	if (qtdeSlimes < numSlimes)
 	{
@@ -77,7 +77,7 @@ void Fase1::criarSlime(const sf::Vector2f pos)
 	}
 }
 
-void Fase1::criarPerseguidor(const sf::Vector2f pos)
+void FlorestaGosmenta::criarPerseguidor(const sf::Vector2f pos)
 {
 	if (qtdePers < numPers)
 	{
@@ -108,7 +108,7 @@ void Fase1::criarPerseguidor(const sf::Vector2f pos)
 	}
 }
 
-void Fase1::criarJogador(const sf::Vector2f pos)
+void FlorestaGosmenta::criarJogador(const sf::Vector2f pos)
 {
 	
 	Entidades::Personagens::Jogadores::Jogador* jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.f, 50.f));

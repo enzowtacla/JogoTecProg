@@ -12,7 +12,7 @@ Menu::Menu() : Ente(IDs::ID::MenuPrincipal), botoesMenu(), criarFase(false), num
     fonte = pGG->getGrafico()->carregarFonte("Fonte/menu.ttf");
 
     std::vector<std::string> botoes = {
-        "Floresta Gosmenta", "Poco de Lava", "1 jogador", "2 jogadores", "Ranking", "Sair"};
+        "Floresta Gosmenta", "Floresta de Lava", "1 jogador", "2 jogadores", "Ranking", "Sair"};
 
     for (int i = 0; i < botoes.size(); i++)
     {

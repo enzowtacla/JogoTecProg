@@ -1,7 +1,7 @@
 #pragma once
 #include "../include/Menus/Menu.h"
-#include "../include/Fases/Fase1.h"
-#include "../include/Fases/Fase2.h"
+#include "../include/Fases/FlorestaGosmenta.h"
+#include "../include/Fases/FlorestaLava.h"
 #include "../include/Gerenciadores/GerenciadorGrafico.h"
 #include "../include/Gerenciadores/GerenciadorEventos.h"
 #include "../include/Gerenciadores/GerenciadorInputs.h"

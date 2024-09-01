@@ -4,7 +4,7 @@
 #include "../Personagens/Jogadores/Jogador.h"
 #include "../Personagens/Inimigos/Inimigo.h"
 
-#define EMPUXO -800.f
+//#define EMPUXO -800.f
 
 using namespace sf;
 
@@ -19,15 +19,13 @@ namespace Jogo
 			protected:
 				bool danoso;
 				bool colidir;
-				float deltaT; //dt
-				Vector2f velFinal;
 
 				//sf::Texture textura;
 			public:
 				Obstaculo(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id);
 				virtual ~Obstaculo();
 				virtual void atualizar() = 0; //desenhar
-				void gravidadeObstaculo();
+				void atualizarPosicao();
 				const bool getDanoso() const;
 				virtual void colisao(Entidade* outra, sf::Vector2f ds) = 0;
 				//void Save(std::ofstream& savefile);

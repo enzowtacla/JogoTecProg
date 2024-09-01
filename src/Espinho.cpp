@@ -8,7 +8,7 @@ namespace Jogo {
         namespace Obstaculos {
 
             Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam) :
-                Obstaculo(pos, tam, VELOCIDADE_ESPINHO,IDs::ID::espinho), dano(DANO_ESPINHO_PADRAO)
+                Obstaculo(pos, tam, VELOCIDADE_ESPINHO, IDs::ID::espinho), dano(DANO_ESPINHO_PADRAO)
             {
                 //inicializarAnimacao();
                 corpo = sf::RectangleShape(tam);
@@ -35,12 +35,13 @@ namespace Jogo {
 	            if(pPersonagem){
 		            Personagens::Jogadores::Jogador* pJogador = static_cast<Personagens::Jogadores::Jogador*>(pPersonagem);
 		            pJogador->tomarDano(DANO_ESPINHO_PADRAO);
+                    pJogador->knockBack(200.f);
 	            }
             }
 
             void Espinho::atualizar()
             {
-                gravidadeObstaculo();
+                atualizarPosicao();
             }
 
         }

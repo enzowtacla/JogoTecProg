@@ -5,6 +5,7 @@
 #include "../include/Entidades/Personagens/Jogadores/Jogador.h"
 
 #define ALCANCE_MAX 1000.0f
+#define VELOCIDADE_GRAVIDADE 0.f
 
 namespace Jogo {
     namespace Entidades {
@@ -24,7 +25,7 @@ namespace Jogo {
             void atualizar() override;
             void desenhar() override;
             void colisao(Entidade* outra, sf::Vector2f ds = sf::Vector2f(0.f, 0.f));
-
+            void atualizarPosicao();
             const float getDano() const;
             const bool getAtivo();
             void setAtivo(bool ativo);

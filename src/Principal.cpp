@@ -43,7 +43,7 @@ void Jogo::Principal::inicializar()
 
 void Jogo::Principal::criarFase1() 
 {
-    Fases::Fase1* aux = new Fases::Fase1();
+    Fases::FlorestaGosmenta* aux = new Fases::FlorestaGosmenta();
 
     if (!aux) {
         std::cout << "Nao foi possivel criar a fase na Principal" << std::endl;
@@ -56,7 +56,7 @@ void Jogo::Principal::criarFase1()
 
 void Jogo::Principal::criarFase2()
 {
-    Fases::Fase2* aux = new Fases::Fase2();
+    Fases::FlorestaLava* aux = new Fases::FlorestaLava();
     if (!aux) {
         std::cout << "Nao foi possivel criar a fase na Principal" << std::endl;
         exit(1);

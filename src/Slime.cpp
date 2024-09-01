@@ -22,7 +22,7 @@ Slime::~Slime()
 
 void Slime::atualizar()
 {
-    gravidadeObstaculo();
+    atualizarPosicao();
 }
 
 void Slime::colisao(Entidade* outra, sf::Vector2f ds)
