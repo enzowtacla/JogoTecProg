@@ -6,7 +6,7 @@ namespace Jogo
 {
 	namespace Fases
 	{
-		class Fase2 :public Fase
+		class FlorestaLava :public Fase
 		{
 		private:
 			static int qtdeChefao;
@@ -15,8 +15,8 @@ namespace Jogo
 			const int numLavas;
 
 		public:
-			Fase2();
-			~Fase2();
+			FlorestaLava();
+			~FlorestaLava();
 			void criarMapa(const std::string& arquivoTxt);
 			void criarJogador(const sf::Vector2f pos);
 			void criarLava(const sf::Vector2f pos);

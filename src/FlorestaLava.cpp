@@ -1,4 +1,4 @@
-#include "../include/Fases/Fase2.h"
+#include "../include/Fases/FlorestaLava.h"
 #include "../Jogadores/Jogador.h"
 #include "../include/Entidades/Personagens/Inimigos/Chefao.h"
 #include "../include/Entidades/Obstaculos/Lava.h"
@@ -11,18 +11,18 @@ using namespace Inimigos;
 using namespace Jogadores;
 using namespace Obstaculos;
 
-int Fase2::qtdeChefao(0);
-int Fase2::qtdeLavas(0);
+int FlorestaLava::qtdeChefao(0);
+int FlorestaLava::qtdeLavas(0);
 
-Fase2::Fase2() : Fase(IDs::ID::fase2), numChefao(rand() % 3 + 3), numLavas(rand() % 3 + 3)
+FlorestaLava::FlorestaLava() : Fase(IDs::ID::fase2), numChefao(rand() % 3 + 3), numLavas(rand() % 3 + 3)
 {
 }
 
-Fase2::~Fase2()
+FlorestaLava::~FlorestaLava()
 {
 }
 
-void Fase2::criarMapa(const std::string &arquivoTxt)
+void FlorestaLava::criarMapa(const std::string &arquivoTxt)
 {
 	std::ifstream arquivo(arquivoTxt);
 	std::string linha;
@@ -47,7 +47,7 @@ void Fase2::criarMapa(const std::string &arquivoTxt)
 	arquivo.close();
 }
 
-void Fase2::criarJogador(const sf::Vector2f pos)
+void FlorestaLava::criarJogador(const sf::Vector2f pos)
 {
 	Entidades::Personagens::Jogadores::Jogador *jogador = new Entidades::Personagens::Jogadores::Jogador(pos, Vector2f(50.f, 50.f));
 
@@ -81,7 +81,7 @@ void Fase2::criarJogador(const sf::Vector2f pos)
 	}
 }
 
-void Fase2::criarChefao(const sf::Vector2f pos)
+void FlorestaLava::criarChefao(const sf::Vector2f pos)
 {
 	if (qtdeChefao < numChefao)
 	{
@@ -114,7 +114,7 @@ void Fase2::criarChefao(const sf::Vector2f pos)
 	}
 }
 
-void Fase2::criarLava(const sf::Vector2f pos)
+void FlorestaLava::criarLava(const sf::Vector2f pos)
 {
 	if (qtdeLavas < numLavas)
 	{
