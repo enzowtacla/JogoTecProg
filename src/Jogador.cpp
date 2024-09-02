@@ -9,9 +9,8 @@ int Jogador::cont_j(0);
 
 Jogador::Jogador(const Vector2f pos, const Vector2f tam) : Personagem(pos, tam, VELOCIDADE_JOGADOR_X, IDs::ID::jogador), noChao(false), num_jogador(cont_j++)
 {
-    corpo.setFillColor(Color::Cyan);
-    corpo.setPosition(pos);
-    inicializa();
+	textura = pGG->carregarTextura("./Assets/jogador.png");
+	corpo.setTexture(&textura);
 }
 
 Jogador::~Jogador()
