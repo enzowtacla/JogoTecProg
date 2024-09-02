@@ -16,7 +16,7 @@ namespace Jogo
 			RectangleShape fundo;
 
 		public:
-			Fundo(const Vector2f tamJanela, Texture textura);
+			Fundo(const Vector2f tamJanela, const char* caminhoTextura);
 			~Fundo();
 			void desenhar();
 		};

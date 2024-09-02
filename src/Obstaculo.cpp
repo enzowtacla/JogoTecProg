@@ -6,59 +6,55 @@ using namespace Obstaculos;
 
 Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id) : Entidade(pos, tam, vel, id), danoso(false)
 {
-	//corpo.setPosition(pos);
-	//textura = pGG->carregarTextura("./Assets/plataforma.png");
-	//corpo.setTexture(&textura);
+	// corpo.setPosition(pos);
+	// textura = pGG->carregarTextura("./Assets/plataforma.png");
+	// corpo.setTexture(&textura);
 }
 
 Obstaculo::~Obstaculo()
 {
-
 }
 
-
-void Obstaculo::colisao(Entidade* outra, sf::Vector2f ds)
+void Obstaculo::colisao(Entidade *outra, sf::Vector2f ds)
 {
-
 }
 
 const bool Obstaculo::getDanoso() const
 {
-    return danoso;
+	return danoso;
 }
 
 void Obstaculo::atualizarPosicao()
 {
 	dt = pGG->getTempo();
-	
+
 	Vector2f ds(0.f, 0.f);
 
 	const float Vy = velFinal.y;
 	velFinal.y = (velFinal.y + GRAVIDADE * dt) + (velFinal.y + EMPUXO * dt);
-	ds.y = Vy * dt+ ((GRAVIDADE+EMPUXO) * dt * dt) / 2.0f;
+	ds.y = Vy * dt + ((GRAVIDADE + EMPUXO) * dt * dt) / 2.0f;
 
 	setPos(Vector2f(pos.x + ds.x, pos.y + ds.y));
 }
-
 
 /*
 //código inspirado no jogo do Murilo; https://github.com/Lillo-M/TheWizard
 void Obstaculo::Save(std::ofstream& savefile)
 {
-    savefile << this->getID() << std::endl;
+	savefile << this->getID() << std::endl;
 	savefile << Position.x << std::endl;
-	savefile << Position.y << std::endl; 
-    savefile << Velocity.x << std::endl;
+	savefile << Position.y << std::endl;
+	savefile << Velocity.x << std::endl;
 	savefile << Velocity.y << std::endl;
 }
 
 void Obstaculo::Load(std::ifstream& savefile)
 {
-    int iread;
-    savefile >> iread;
+	int iread;
+	savefile >> iread;
 	savefile >> Position.x;
-	savefile >> Position.y; 
-    savefile >> Velocity.x;
+	savefile >> Position.y;
+	savefile >> Velocity.x;
 	savefile >> Velocity.y;
 }
 */

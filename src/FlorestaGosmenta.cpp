@@ -13,7 +13,7 @@ using namespace Obstaculos;
 int FlorestaGosmenta::qtdePers(0);
 int FlorestaGosmenta::qtdeSlimes(0);
 
-FlorestaGosmenta::FlorestaGosmenta() : Fase(IDs::ID::fase1), numPers(rand() % 3 + 3), numSlimes(rand() % 3 + 3)
+FlorestaGosmenta::FlorestaGosmenta() : Fase(IDs::ID::fase1, "Assets/Fundo1.jpg"), numPers(rand() % 2 + 3), numSlimes(rand() % 2 + 3)
 {
 }
 
@@ -50,7 +50,7 @@ void FlorestaGosmenta::criarSlime(const sf::Vector2f pos)
 {
 	if (qtdeSlimes < numSlimes)
 	{
-		Entidades::Obstaculos::Slime *slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
+		Entidades::Obstaculos::Slime *slime = new Entidades::Obstaculos::Slime(pos, Vector2f(50.0f, 50.0f));
 
 		if (!slime)
 		{
@@ -64,7 +64,7 @@ void FlorestaGosmenta::criarSlime(const sf::Vector2f pos)
 	{
 		if (rand() % 100 < 25)
 		{
-			Entidades::Obstaculos::Slime *slime = new Entidades::Obstaculos::Slime(pos, Vector2f(100.0f, 35.0f));
+			Entidades::Obstaculos::Slime *slime = new Entidades::Obstaculos::Slime(pos, Vector2f(50.0f, 50.0f));
 
 			if (!slime)
 			{

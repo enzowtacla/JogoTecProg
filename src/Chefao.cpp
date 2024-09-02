@@ -8,10 +8,10 @@ using namespace Inimigos;
 Entidades::Personagens::Jogadores::Jogador *Chefao::pJogador = nullptr;
 Entidades::Personagens::Jogadores::Jogador *Chefao::pJogador2 = nullptr;
 
-Chefao::Chefao (const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, IDs::ID::chefao), forcaAtaque(DANAR), delayAtaque(2.0f), tempoUltimoAtaque(0.0f)
+Chefao::Chefao (const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, IDs::ID::chefao),delayAtaque(2.0f)
 {
-    corpo.setFillColor(Color::Yellow);
-    //void inicializa();
+	textura = pGG->carregarTextura("./Assets/chefao.png");
+	corpo.setTexture(&textura);
 }
 
 Chefao::~Chefao()
@@ -112,18 +112,6 @@ void Chefao::colisao(Entidade *outra, sf::Vector2f ds)
 	if (outra->getId() == IDs::ID::jogador)
 	{
 		
-	}
-}
-
-void Chefao::atualizarAnimacao()
-{
-	if (moveAleatorio == 0)
-	{
-		paraEsquerda = false;
-	}
-	else
-	{
-		paraEsquerda = true;
 	}
 }
 

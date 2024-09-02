@@ -26,7 +26,6 @@ namespace Jogo
 				float dt;
 				bool andando;
 				const float velMax;
-				Animacoes::Animacao animacao;
 				float vida;
 
 			public:

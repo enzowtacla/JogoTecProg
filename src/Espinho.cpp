@@ -11,9 +11,8 @@ namespace Jogo {
                 Obstaculo(pos, tam, VELOCIDADE_ESPINHO, IDs::ID::espinho), dano(DANO_ESPINHO_PADRAO)
             {
                 //inicializarAnimacao();
-                corpo = sf::RectangleShape(tam);
-                corpo.setPosition(pos);
-                corpo.setFillColor(Color::Black);
+                textura = pGG->carregarTextura("./Assets/espinho.png");
+	            corpo.setTexture(&textura);;
             }
 
             Espinho::~Espinho() 
@@ -35,7 +34,7 @@ namespace Jogo {
 	            if(pPersonagem){
 		            Personagens::Jogadores::Jogador* pJogador = static_cast<Personagens::Jogadores::Jogador*>(pPersonagem);
 		            pJogador->tomarDano(DANO_ESPINHO_PADRAO);
-                    pJogador->knockBack(200.f);
+                    pJogador->knockBack(empurrar);
 	            }
             }
 

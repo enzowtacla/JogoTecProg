@@ -36,6 +36,7 @@ namespace Jogo
             const bool getCriarFase() const;
             const int getNumFase() const;
             const int getNumJogadores() const;
+            void setNumFase(int nf);
         };
     }
 }

@@ -76,34 +76,29 @@ void Jogo::Principal::criarMenu()
 	}	
 }
 
-void Jogo::Principal::Executar()
-{
-	while (pGG->verificaJanelaAberta()) {
-		
-		pEventos->executar();
+void Jogo::Principal::Executar() {
+    while (pGG->verificaJanelaAberta()) {
+        pEventos->executar();
+        pGG->limpaJanela();
 
-		pGG->limpaJanela();
+        if (!menu->getCriarFase()) {
+            menu->desenhar();
+            pGG->resetarRelogio();
+        } else {
+            if (menu->getNumFase() == 1) {
+                fase1->executar();
+                if (fase1->getNumInimigos() == 0) {
+                    // Finaliza a Fase 1 e inicia a Fase 2
+                    menu->setNumFase(2); // Muda a fase atual para 2
+                }
+            } else if (menu->getNumFase() == 2) {
+                fase2->executar();
+                if (fase2->getNumInimigos() == 0) {
+                    pGG->fecharJanela(); // Fecha o jogo
+                }
+            }
+        }
 
-		if(!menu->getCriarFase()){
-			menu->desenhar();
-			pGG->resetarRelogio();
-		}
-		else {
-			if(menu->getNumFase() == 1){
-				fase1->executar();
-				if(fase1->getNumInimigos() == 0){
-					fase2->executar();
-				}
-			}
-			else if(menu->getNumFase() == 2){
-				fase2->executar();
-				if(fase2->getNumInimigos() == 0){
-					pGG->fecharJanela();
-				}
-			}
-		}
-		
-		pGG->mostraElementos();
-	}
-
+        pGG->mostraElementos();
+    }
 }

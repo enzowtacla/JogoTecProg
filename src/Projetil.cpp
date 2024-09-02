@@ -4,9 +4,10 @@ using namespace Jogo;
 using namespace Entidades;
 
 Projetil::Projetil(const sf::Vector2f pos, const sf::Vector2f tam, const sf::Vector2f direcao, const float velocidade, const float dano, const float alcanceMaximo)
-    : Entidade(pos, tam, VELOCIDADE_GRAVIDADE, IDs::ID::projetil), direcao(direcao), velocidade(0.1f), dano(8.f), distanciaPercorrida(0.f), alcanceMaximo(ALCANCE_MAX), ativo(true)
+    : Entidade(pos, tam, VELOCIDADE_GRAVIDADE, IDs::ID::projetil), direcao(direcao), velocidade(0.15f), dano(8.f), distanciaPercorrida(0.f), alcanceMaximo(ALCANCE_MAX), ativo(true)
 {
-    corpo.setFillColor(sf::Color::Blue);
+    textura = pGG->carregarTextura("./Assets/projetil.png");
+	corpo.setTexture(&textura);
 }
 
 Projetil::~Projetil()

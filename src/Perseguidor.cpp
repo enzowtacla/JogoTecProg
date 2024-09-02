@@ -8,10 +8,13 @@ using namespace Inimigos;
 Entidades::Personagens::Jogadores::Jogador *Perseguidor::pJogador = nullptr;
 Entidades::Personagens::Jogadores::Jogador *Perseguidor::pJogador2 = nullptr;
 
-Perseguidor::Perseguidor(const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, IDs::ID::perseguidor), forcaCabecada(CABECADA), forcaEmpurrao(EMPURRAO)
+Perseguidor::Perseguidor(const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, IDs::ID::perseguidor), forcaCabecada(CABECADA), forcaEmpurrao(EMPURRAO), perseguindo(false)
 {
-	corpo.setFillColor(Color::Magenta);
-	void inicializa();
+	textura = pGG->carregarTextura("./Assets/perseguidor.png");
+    corpo.setTexture(&textura);
+    //corpo.setOrigin(tam.x, 0);
+    //corpo.setFillColor(Color::Magenta);
+	
 }
 
 Perseguidor::~Perseguidor()
@@ -20,9 +23,7 @@ Perseguidor::~Perseguidor()
 
 void Perseguidor::inicializa()
 {
-	// animacao.addAnimacao("./Assets/RinoParado.png", "PARADO", 11, 0.12f, sf::Vector2f(2, 2));
-	// animacao.addAnimacao("./Assets/RinoAndando.png", "RINOANDANDO", 6, 0.12f, sf::Vector2f(2, 2));
-	// corpo.setOrigin(sf::Vector2f(tam.x / 2.5f, tam.y / 2.0f));
+
 }
 
 void Perseguidor::setJogador(Entidades::Personagens::Jogadores::Jogador *j)
@@ -37,17 +38,17 @@ void Perseguidor::setJogador2(Entidades::Personagens::Jogadores::Jogador *j)
 
 void Perseguidor::persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
 {
+    perseguindo = true;
 	if (posJogador.x - posInimigo.x > 0.f)
 	{
 		paraEsquerda = false;
 		andar(paraEsquerda);
-		// animacao.atualizar(paraEsquerda, "RINOANDANDO");
 	}
 	else
 	{
 		paraEsquerda = true;
 		andar(paraEsquerda);
-		// animacao.atualizar(paraEsquerda, "RINOANDANDO");
+        //corpo.setScale(-1.f,1.f);
 	}
 }
 
@@ -106,24 +107,11 @@ void Perseguidor::moveInimigo()
     }
     else
     {
+        perseguindo = false;
         atualizaMovimentoAleatorio();
     }
 }
 
-
-void Perseguidor::atualizarAnimacao()
-{
-	if (moveAleatorio == 0)
-	{
-		paraEsquerda = false;
-		// animacao.atualizar(paraEsquerda, "RINOANDANDO");
-	}
-	else
-	{
-		paraEsquerda = true;
-		// animacao.atualizar(paraEsquerda, "RINOANDANDO");
-	}
-}
 
 void Perseguidor::colisao(Entidade *outra, sf::Vector2f ds)
 {

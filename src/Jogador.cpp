@@ -20,7 +20,9 @@ Jogador::~Jogador()
 
 void Jogador::inicializa()
 {
-    // Inicialização de animações e outros recursos
+    //animacao.addAnimacao("./Assets/Anda.png", "ANDA", 12, 0.12f, sf::Vector2f(2, 2));
+    //animacao.addAnimacao("./Assets/Parado.png", "PARADO", 11, 0.12f, sf::Vector2f(2, 2));
+	//corpo.setOrigin(sf::Vector2f(tam.x / 2, tam.y / 2));
 }
 
 const RectangleShape Jogador::getCorpo()
@@ -34,7 +36,9 @@ void Jogador::atualizar()
     {
         poderemover = true;
     }
+    //atualizarAnimacao();
     atualizarPosicao();
+
 }
 
 void Jogador::desenhar()
@@ -42,17 +46,6 @@ void Jogador::desenhar()
     pGG->desenhaElementos(corpo);
 }
 
-void Jogador::atualizarAnimacao()
-{
-    if (andando)
-    {
-        animacao.atualizar(paraEsquerda, "ANDA");
-    }
-    else if (!andando)
-    {
-        animacao.atualizar(paraEsquerda, "PARADO");
-    }
-}
 
 void Jogador::podePular()
 {
@@ -61,7 +54,7 @@ void Jogador::podePular()
 
 void Jogador::pular()
 {
-    if (noChao)
+    if (noChao && velFinal.y == 0)
     {
         velFinal.y = -sqrt(2.f * GRAVIDADE * TAMANHO_PULO);
         noChao = false;
@@ -96,8 +89,8 @@ void Jogador::colisaoJogador(Vector2f ds, Personagens::Personagem *pPersonagem)
     sf::Vector2f velFinal = pPersonagem->getVelFinal();
     if (ds.x < 0.0f && ds.y < 0.0f) { //houve colisao
         if(!(ds.x > ds.y)) {
-            if(posOutro.y >- pos.y) {
-                posOutro.y -= ds.y;
+            if(posOutro.y >= pos.y) {
+                //posOutro.y -= ds.y;
                 pPersonagem->tomarDano(100);
             }
             velFinal.y = 0.0f;

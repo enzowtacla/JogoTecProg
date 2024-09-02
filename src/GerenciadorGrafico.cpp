@@ -7,7 +7,7 @@ using namespace Gerenciadores;
 GerenciadorGrafico *GerenciadorGrafico::pGG(nullptr);
 float GerenciadorGrafico::tempo(0.0f);
 
-GerenciadorGrafico::GerenciadorGrafico() : janela(new RenderWindow(VideoMode(1280.0f, 720.0f), "Aventura++")), relogio()
+GerenciadorGrafico::GerenciadorGrafico() : janela(new RenderWindow(VideoMode(1280.0f, 720.0f), "Floresta Desencantada")), relogio()
 {
 	if (!janela)
 	{
