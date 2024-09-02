@@ -18,7 +18,7 @@ using namespace Obstaculos;
 Fase::Fase(const IDs::ID id, const char* caminhoTextura) : Ente(id), listaObstaculos(), listaInimigos(), listaJogadores(), colisor(&listaJogadores, &listaInimigos, &listaObstaculos), pInputs(pInputs->getGerenciadorInputs()), fundo(Vector2f(1280.f, 720.f), caminhoTextura), numCogu(rand() % 2 + 3), numEsp(rand() % 2 + 3), qtdCogu(0),
 qtdEsp(0), menu(menu->getMenu()), removeu(false)
 {
-	std::cout << "Num espinhos: " << numEsp << std::endl;
+
 }
 
 Fase::~Fase()

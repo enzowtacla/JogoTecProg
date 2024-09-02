@@ -16,7 +16,6 @@ int FlorestaLava::qtdeLavas(0);
 
 FlorestaLava::FlorestaLava() : Fase(IDs::ID::fase2, "Assets/Fundo2.png"), numChefao(rand() % 2 + 3), numLavas(rand() % 2 + 3)
 {
-	std::cout << "Num de lavas " << numLavas << std::endl;
 }
 
 FlorestaLava::~FlorestaLava()
