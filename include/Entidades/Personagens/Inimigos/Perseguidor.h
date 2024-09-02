@@ -30,7 +30,6 @@ namespace Jogo
 					static void setJogador2(Entidades::Personagens::Jogadores::Jogador* pJogador2);
 					void moveInimigo();
 					void persegueJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo);
-					void atualizarAnimacao();
 					void colisao(Entidade* outra, sf::Vector2f ds);
 					void cabeciar(Personagem* pPersonagem);
 				};

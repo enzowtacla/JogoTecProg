@@ -9,10 +9,8 @@ using namespace Jogadores;
 
 Cogumelo::Cogumelo(const Vector2f pos, const Vector2f tam) : Inimigo(pos, tam, IDs::ID::cogumelo), forçaVeneno(DANO)
 {
-
-	corpo.setFillColor(Color::Red);
-
-	inicializa();
+	textura = pGG->carregarTextura("./Assets/cogumelo.png");
+	corpo.setTexture(&textura);	
 }
 
 Cogumelo::~Cogumelo()
@@ -33,19 +31,6 @@ void Cogumelo::moveInimigo()
 	//atualizarAnimacao();
 }
 
-void Cogumelo::atualizarAnimacao()
-{
-	
-	if (moveAleatorio == 0) {
-		paraEsquerda = false;
-		animacao.atualizar(paraEsquerda, "ANDANDO");
-	}
-	else
-	{
-		paraEsquerda = true;
-		animacao.atualizar(paraEsquerda, "ANDANDO");
-	}
-}
 
 void Cogumelo::colisao(Entidade* outra, sf::Vector2f ds)
 {

@@ -20,7 +20,6 @@ namespace Jogo
 				public:
 					Cogumelo(const Vector2f pos, const Vector2f tam);
 					~Cogumelo();
-					void atualizarAnimacao();
 					void moveInimigo();
 					void colisao(Entidade* outra, sf::Vector2f ds);
 					void envenenar(Personagem* pPersonagem);

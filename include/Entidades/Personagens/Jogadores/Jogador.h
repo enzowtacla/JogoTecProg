@@ -32,7 +32,6 @@ namespace Jogo
                     ~Jogador();
                     const RectangleShape getCorpo();
                     void atualizar();
-                    void atualizarAnimacao();
                     void desenhar();
                     void podePular();
                     void pular();

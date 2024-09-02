@@ -46,17 +46,6 @@ void Jogador::desenhar()
     pGG->desenhaElementos(corpo);
 }
 
-void Jogador::atualizarAnimacao()
-{
-    if (andando)
-    {
-        animacao.atualizar(paraEsquerda, "ANDA");
-    }
-    else if (!andando)
-    {
-        animacao.atualizar(paraEsquerda, "PARADO");
-    }
-}
 
 void Jogador::podePular()
 {
@@ -65,7 +54,7 @@ void Jogador::podePular()
 
 void Jogador::pular()
 {
-    if (noChao && velFinal.y <= 0)
+    if (noChao && velFinal.y == 0)
     {
         velFinal.y = -sqrt(2.f * GRAVIDADE * TAMANHO_PULO);
         noChao = false;

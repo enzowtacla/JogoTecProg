@@ -9,8 +9,6 @@ Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, const IDs::ID id) :
 	Personagem(pos, tam, VELOCIDADE_INIMIGO_X, id), tempoMover(0.0f)
 {
 	inicializa();
-	//textura = pGG->carregarTextura("./Assets/inimigo.png");
-	//corpo.setTexture(&textura);
 	moveAleatorio = rand() % 3;
 
 	if (moveAleatorio == 0)

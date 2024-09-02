@@ -40,6 +40,7 @@ namespace Jogo
 			void desenhar();
 			int getNumInimigos();
 			void removeJogador();
+
 		//Template Method
 		protected:
 			void criarCogumelo(const sf::Vector2f pos);

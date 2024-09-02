@@ -7,8 +7,6 @@
 
 #define ALCANCE_X 200.0f
 #define ALCANCE_Y 200.0f
-#define DANAR 0.5f
-#define EMPURRAR 5.f
 
 namespace Jogo
 {
@@ -23,9 +21,7 @@ namespace Jogo
 				private:
 					static Entidades::Personagens::Jogadores::Jogador* pJogador;
 					static Entidades::Personagens::Jogadores::Jogador* pJogador2;
-                    float forcaAtaque;
 					float delayAtaque;
-					float tempoUltimoAtaque;
 					std::chrono::steady_clock::time_point ultimoAtaque;
 					std::vector<Entidades::Projetil*> projeteis;
 
@@ -37,7 +33,6 @@ namespace Jogo
 					void moveInimigo();
 					void atiraJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo);
 					void colisao(Entidade* outra, sf::Vector2f ds);
-					void atualizarAnimacao();
 					void atualizaProjeteis();
 					void atualizar();
 					void desenhar(); 

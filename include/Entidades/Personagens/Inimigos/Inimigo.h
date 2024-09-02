@@ -24,7 +24,6 @@ namespace Jogo
 
 					virtual void moveInimigo();
 					void atualizaMovimentoAleatorio();
-					virtual void atualizarAnimacao() = 0;
 					void inicializa();
 
 				public:

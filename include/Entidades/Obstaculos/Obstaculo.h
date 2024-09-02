@@ -19,7 +19,7 @@ namespace Jogo
 			protected:
 				bool danoso;
 				bool colidir;
-				Texture textura;
+				//Texture textura;
 
 			public:
 				Obstaculo(const Vector2f pos, const Vector2f tam, const float vel, const IDs::ID id);

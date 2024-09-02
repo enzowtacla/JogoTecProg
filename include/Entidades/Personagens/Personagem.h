@@ -26,7 +26,6 @@ namespace Jogo
 				float dt;
 				bool andando;
 				const float velMax;
-				Animacoes::Animacao animacao;
 				float vida;
 
 			public:
@@ -35,7 +34,6 @@ namespace Jogo
 				void andar(const bool paraEsquerda);
 				void parar();
 				virtual void atualizar() = 0;
-				virtual void atualizarAnimacao() =0;
 				void atualizarPosicao();
 				Vector2f getVelFinal();
 				void setVelFinal(const Vector2f velFinal);

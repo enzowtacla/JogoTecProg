@@ -13,7 +13,7 @@ using namespace Obstaculos;
 int FlorestaGosmenta::qtdePers(0);
 int FlorestaGosmenta::qtdeSlimes(0);
 
-FlorestaGosmenta::FlorestaGosmenta() : Fase(IDs::ID::fase1, "Assets/Fundo1.jpg"), numPers(rand() % 3 + 2), numSlimes(rand() % 3 + 2)
+FlorestaGosmenta::FlorestaGosmenta() : Fase(IDs::ID::fase1, "Assets/Fundo1.jpg"), numPers(rand() % 2 + 3), numSlimes(rand() % 2 + 3)
 {
 }
 

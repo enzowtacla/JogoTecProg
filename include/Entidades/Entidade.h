@@ -4,7 +4,6 @@
 #include <SFML/Graphics.hpp>
 //#include "GerenciadorGrafico.h"
 #include "../Ente.h"
-#include "../Animacoes/Animacao.h"
 
 #define GRAVIDADE 800.0f
 #define EMPUXO -800.0f
@@ -24,6 +23,7 @@ namespace Jogo
 			float dt;
 			bool andando;
 			const float velMax;
+			sf::Texture textura;
 
 		public:
 			Entidade(const sf::Vector2f pos, const sf::Vector2f tam, const float vel, const IDs::ID id);

@@ -4,9 +4,9 @@ using namespace Jogo;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(const Vector2f pos, const Vector2f tam) :Obstaculo(pos, tam, VELOCIDADE_PLATAFORMA,IDs::ID::plataforma)
+Plataforma::Plataforma(const Vector2f pos, const Vector2f tam) :Obstaculo(pos, tam, VELOCIDADE_PLATAFORMA,IDs::ID::plataforma), grande(false)
 {
-	textura = pGG->carregarTextura("./Assets/plataforma2.png");
+	textura = pGG->carregarTextura("./Assets/plataforma.png");
 	corpo.setTexture(&textura);
 }
 
@@ -64,4 +64,9 @@ void Plataforma::atualizar()
 {
     //desenhar();
     atualizarPosicao();
+}
+
+const bool Plataforma::getGrande() const
+{
+    return grande;
 }
