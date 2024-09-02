@@ -40,6 +40,7 @@ namespace Jogo
 			void desenhar();
 			int getNumInimigos();
 			void removeJogador();
+			static void salvarPontuacao();
 		//Template Method
 		protected:
 			void criarCogumelo(const sf::Vector2f pos);
@@ -50,7 +51,6 @@ namespace Jogo
 			virtual void criarSlime(const sf::Vector2f pos);
 			virtual void criarLava(const sf::Vector2f pos);
 			void criarEspinho(const sf::Vector2f pos);
-
 		};
 
 	}

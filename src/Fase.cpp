@@ -6,6 +6,8 @@
 #include "../include/Entidades/Obstaculos/Slime.h"
 #include "../include/Entidades/Obstaculos/Espinho.h"
 #include "../include/Entidades/Obstaculos/Lava.h"
+#include "../include/Entidades/Personagens/Jogadores/Jogador.h"
+#include <fstream>
 
 using namespace Jogo;
 using namespace Fases;
@@ -208,6 +210,7 @@ void Fase::desenhar()
 {
 	if (listaJogadores.getTam() == 0)
 	{
+		salvarPontuacao();
 		pGG->fecharJanela();
 	}
 	fundo.desenhar();
@@ -243,4 +246,81 @@ void Fase::removeJogador()
 		}
 	}
 	removeu = true;
+}
+
+void InsertionSort(std::vector<int>& Scores, std::vector<std::string>& Names);
+void Fase::salvarPontuacao()
+{
+	std::cout << "Nome da Dupla:" << std::endl;
+	string nome_dupla;
+	std::cin>> nome_dupla;
+	std::cout << std::endl;
+
+	std::cout << "RANKING:" << std::endl;
+
+	std::ifstream arquivo_i("Ranking.txt");
+	std::vector<int> rankingScores;
+	std::vector<string> rankingNomes;
+
+	if (!arquivo_i.is_open())
+    {
+        std::cout << "ERROR: Failed to open Leaderboard File!" << std::endl;
+        exit(1);
+    }
+
+	std::string line;
+	while (std::getline(arquivo_i, line))
+    {
+        if (!line.empty())
+        {
+            rankingNomes.push_back(line.substr(0, line.find_first_of(' ')));
+            rankingScores.push_back(stoi(line.substr(line.find_first_of(' ') + 1)));
+        }
+    }
+
+	rankingNomes.push_back(nome_dupla);
+    rankingScores.push_back(Jogador::getPontuacao());
+
+	InsertionSort(rankingScores, rankingNomes);
+
+	for(int i = 0; i < rankingNomes.size(); i++)
+	{
+		std::cout << rankingNomes[i] << ": " << rankingScores[i] << std::endl;
+	}
+
+	arquivo_i.close();
+
+	std::ofstream arquivo_o("Ranking.txt");
+
+	for(int i = 0; i < rankingNomes.size(); i++)
+	{
+		arquivo_o << rankingNomes[i] << " " << rankingScores[i] << std::endl;
+	}
+
+	arquivo_o.close();
+}
+
+void swap(std::vector<int>& A, int i, int j, std::vector<std::string>& B)
+{
+    int auxInt = A[i]; // Troca a posição das pontuações
+    A[i] = A[j];
+    A[j] = auxInt;
+
+    std::string auxString = B[i]; // Troca a posição dos nomes 
+    B[i] = B[j];
+    B[j] = auxString;
+}
+
+void InsertionSort(std::vector<int>& Scores, std::vector<std::string>& Names)
+{
+    unsigned int i, j;
+    for (i = 1; i < Scores.size(); i++)
+    {
+        j = i;
+        while ((j > 0) && (Scores[j] > Scores[j - 1]))
+        {
+            swap(Scores, j, j - 1, Names);
+            j = j - 1;
+        }
+    }
 }

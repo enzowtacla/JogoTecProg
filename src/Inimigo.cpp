@@ -1,4 +1,5 @@
 #include "../include/Entidades/Personagens/Inimigos/Inimigo.h"
+#include "../include/Entidades/Personagens/Jogadores/Jogador.h"
 
 using namespace Jogo;
 using namespace Entidades;
@@ -69,6 +70,7 @@ void Inimigo::atualizar()
 {
 	if(getVida() <= 0.f){
 		poderemover = true;
+		Jogadores::Jogador::aumentaPontuacao(id);
 	}
 	moveInimigo();
 
@@ -85,6 +87,5 @@ void Inimigo::tomarDano(float dano)
     if (vida <= 0.0f) 
 	{
         poderemover = true;  // Marca o inimigo para remoção
-
     }
 }

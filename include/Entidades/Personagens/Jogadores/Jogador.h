@@ -26,6 +26,7 @@ namespace Jogo
                     float velocidadeMovimento;
                     float velocidadePulo;
                     bool noSlime;
+                    static unsigned int pontuacao;
 
                 public:
                     Jogador(const Vector2f pos, const Vector2f tam);
@@ -46,6 +47,8 @@ namespace Jogo
                     void setVelocidadeMovimento(float velocidade);
                     void knockBack(float dist);
                     const bool getVivo() const;
+                    static void aumentaPontuacao(const IDs::ID id);
+                    static unsigned int getPontuacao();
                 };
             }
         }

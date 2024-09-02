@@ -1,4 +1,5 @@
 #include "../include/Entidades/Personagens/Inimigos/Chefao.h"
+#include "../include/Entidades/Personagens/Jogadores/Jogador.h"
 
 using namespace Jogo;
 using namespace Entidades;
@@ -153,8 +154,10 @@ void Chefao::atualizaProjeteis()
 
 void Chefao::atualizar()
 {
-    if(getVida() <= 0.f){
+    if(getVida() <= 0.f)
+    {
 		poderemover = true;
+        Jogadores::Jogador::aumentaPontuacao(id);
 	}
 	moveInimigo();
     atualizaProjeteis();

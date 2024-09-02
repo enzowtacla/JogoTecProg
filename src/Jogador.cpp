@@ -6,6 +6,7 @@ using namespace Personagens;
 using namespace Jogadores;
 
 int Jogador::cont_j(0);
+unsigned int Jogador::pontuacao(0);
 
 Jogador::Jogador(const Vector2f pos, const Vector2f tam) : Personagem(pos, tam, VELOCIDADE_JOGADOR_X, IDs::ID::jogador), noChao(false), num_jogador(cont_j++)
 {
@@ -90,7 +91,6 @@ void Jogador::colisao(Entidade *outra, sf::Vector2f ds)
 
 void Jogador::colisaoJogador(Vector2f ds, Personagens::Personagem *pPersonagem)
 {
-    //std::cout << "Entrou na colisao com jogador " << (int)pPersonagem->getId() <<std::endl;
     sf::Vector2f posOutro = pPersonagem->getPos();
     sf::Vector2f tamOutro = pPersonagem->getTam();
     sf::Vector2f velFinal = pPersonagem->getVelFinal();
@@ -140,4 +140,26 @@ void Jogador::knockBack(float dist)
 const bool Jogador::getVivo() const
 {
     return (vida > 0.f);
+}
+
+void Jogador::aumentaPontuacao(const IDs::ID id)
+{   
+    switch (id)
+	{
+	case IDs::ID::cogumelo:
+		pontuacao += 10;
+		break;
+	case IDs::ID::perseguidor:
+		pontuacao += 20;
+		break;
+	case IDs::ID::chefao:
+		pontuacao += 50;
+		break;
+	}
+    std::cout << "Pontos: " << pontuacao <<std::endl;
+}
+
+unsigned int Jogador::getPontuacao()
+{
+    return pontuacao;
 }
