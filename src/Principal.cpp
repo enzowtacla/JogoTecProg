@@ -94,6 +94,7 @@ void Jogo::Principal::Executar() {
             } else if (menu->getNumFase() == 2) {
                 fase2->executar();
                 if (fase2->getNumInimigos() == 0) {
+                    Fases::Fase::salvarPontuacao();
                     pGG->fecharJanela(); // Fecha o jogo
                 }
             }

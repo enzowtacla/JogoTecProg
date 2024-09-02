@@ -1,11 +1,13 @@
 #include "../include/Entidades/Entidade.h"
 
+
 using namespace Jogo;
 using namespace Entidades;
 
 Entidade::Entidade(const sf::Vector2f pos, const sf::Vector2f tam, const float vel, const IDs::ID id) : Ente(id), corpo(sf::RectangleShape(tam)), pos(pos), tam(tam), poderemover(false), velFinal(vel, 0.0f), velMax(vel), andando(false), dt(0.0f)
 {
 	corpo.setPosition(pos);
+	
 }
 
 Entidade::~Entidade()

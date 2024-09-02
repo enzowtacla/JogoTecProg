@@ -24,6 +24,7 @@ namespace Jogo
             int getTam();
             void limparLista();
             TL* operator[](int pos);
+            bool operator==(TL* elemento);
         };
 
         template<class TL>
@@ -179,6 +180,17 @@ namespace Jogo
             pInicio = nullptr;
             pUltimo = nullptr;
             tam = 0;
+        }
+
+        template<class TL>
+        bool Lista<TL>::operator==(TL* elemento)
+        {
+            if((*elemento) == (*pInicio)){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
 
     }

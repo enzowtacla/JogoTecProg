@@ -143,6 +143,7 @@ void Chefao::atualizar()
 {
     if(getVida() <= 0.f){
 		poderemover = true;
+        Jogadores::Jogador::aumentaPontuacao(id);
 	}
 	moveInimigo();
     atualizaProjeteis();

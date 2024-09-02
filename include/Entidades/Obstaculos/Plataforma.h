@@ -15,13 +15,13 @@ namespace Jogo
 				bool grande;
 				
 			public:
-				Plataforma(const Vector2f pos, const Vector2f tam);
+				Plataforma(const Vector2f pos, const Vector2f tam, const bool g);
 				~Plataforma();
 				void colisao(Entidade* outra, sf::Vector2f ds);
 				void colisaoObstaculo(Vector2f ds, Personagens::Personagem* pPersonagem);
 				void atualizar();
+				void setGrande(const bool g);
 				const bool getGrande() const;
-				//void atualizarPosicao();
 			};
 		}
 	}

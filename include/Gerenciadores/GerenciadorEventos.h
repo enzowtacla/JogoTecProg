@@ -1,3 +1,4 @@
+//Código inpirado no do monitor Burda
 #pragma once
 
 #include "../Gerenciadores/GerenciadorGrafico.h"
