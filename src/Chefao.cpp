@@ -41,7 +41,7 @@ void Chefao::atiraJogador(sf::Vector2f posJogador, sf::Vector2f posInimigo)
         float magnitude = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
         direcao /= magnitude;
 
-        Projetil* novoProjetil = new Projetil(posInimigo, sf::Vector2f(20.0f, 20.0f), direcao, 0.1f, 8.0f, 1000.0f);
+        Projetil* novoProjetil = new Projetil(posInimigo, sf::Vector2f(20.0f, 20.0f), direcao, 0.5f, 20.0f, 1000.0f);
         projeteis.push_back(novoProjetil);
 
         ultimoAtaque = agora; // Reset do tempo do último ataque
@@ -89,7 +89,7 @@ void Chefao::moveInimigo()
         }
         else
         {
-            atiraJogador(posJogador1, posInimigo);
+            atiraJogador(posJogador2, posInimigo);
         }
     }
     else if (jogador1NoAlcance) 
@@ -98,7 +98,7 @@ void Chefao::moveInimigo()
     }
     else if (jogador2NoAlcance) 
     {
-        atiraJogador(posJogador1, posInimigo);
+        atiraJogador(posJogador2, posInimigo);
     }
     else
     {

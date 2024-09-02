@@ -2,7 +2,8 @@
 
 #include "Obstaculo.h"  
 
-#define DANO_ESPINHO_PADRAO 0.10f
+#define DANO_ESPINHO_PADRAO 10.0f
+#define ESPINHO_ESPETAR 150.0f
 #define CAMINHO_TEXTURA_ESPINHO ""
 #define VELOCIDADE_ESPINHO 0.f
 

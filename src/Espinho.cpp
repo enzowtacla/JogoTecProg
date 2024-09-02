@@ -8,7 +8,7 @@ namespace Jogo {
         namespace Obstaculos {
 
             Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam) :
-                Obstaculo(pos, tam, VELOCIDADE_ESPINHO, IDs::ID::espinho), dano(DANO_ESPINHO_PADRAO)
+                Obstaculo(pos, tam, VELOCIDADE_ESPINHO, IDs::ID::espinho), dano(DANO_ESPINHO_PADRAO), empurrar(ESPINHO_ESPETAR)
             {
                 //inicializarAnimacao();
                 textura = pGG->carregarTextura("./Assets/espinho.png");

@@ -1,3 +1,2 @@
-Jao 80
-Enzo 20
-Enzo 0
+joaoegi 190
+teste 70
