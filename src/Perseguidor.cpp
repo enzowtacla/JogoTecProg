@@ -12,18 +12,10 @@ Perseguidor::Perseguidor(const Vector2f pos, const Vector2f tam) : Inimigo(pos, 
 {
 	textura = pGG->carregarTextura("./Assets/perseguidor.png");
     corpo.setTexture(&textura);
-    //corpo.setOrigin(tam.x, 0);
-    //corpo.setFillColor(Color::Magenta);
-	
 }
 
 Perseguidor::~Perseguidor()
 {
-}
-
-void Perseguidor::inicializa()
-{
-
 }
 
 void Perseguidor::setJogador(Entidades::Personagens::Jogadores::Jogador *j)

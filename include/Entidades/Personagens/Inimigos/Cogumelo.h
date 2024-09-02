@@ -16,7 +16,6 @@ namespace Jogo
 				{
 				private:
 					float forçaVeneno;
-					void inicializa();
 				public:
 					Cogumelo(const Vector2f pos, const Vector2f tam);
 					~Cogumelo();

@@ -24,7 +24,6 @@ namespace Jogo
 
 					virtual void moveInimigo();
 					void atualizaMovimentoAleatorio();
-					void inicializa();
 
 				public:
 					Inimigo(const Vector2f pos, const Vector2f tam, const IDs::ID id);

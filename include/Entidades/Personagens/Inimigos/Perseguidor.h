@@ -22,7 +22,7 @@ namespace Jogo
 					float forcaEmpurrao;
 					float forcaCabecada;
 					bool perseguindo;
-					void inicializa();
+
 				public:
 					Perseguidor(const Vector2f pos, const Vector2f tam);
 					~Perseguidor();

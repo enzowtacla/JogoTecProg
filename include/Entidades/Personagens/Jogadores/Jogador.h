@@ -22,7 +22,6 @@ namespace Jogo
                     int num_jogador;
                     static int cont_j;
                     bool noChao;
-                    void inicializa();
                     float velocidadeMovimento;
                     float velocidadePulo;
                     bool noSlime;
