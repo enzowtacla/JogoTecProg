@@ -1,4 +1,5 @@
 //Chain of Responsability - Padrão de projeto
+//Código inpirado no do monitor Giovane
 #pragma once
 
 #include <list>

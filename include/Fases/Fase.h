@@ -1,3 +1,4 @@
+//Código inpirado no do monitor Giovane
 #pragma once
 #include <fstream>
 #include <iostream>
@@ -40,6 +41,7 @@ namespace Jogo
 			void desenhar();
 			int getNumInimigos();
 			void removeJogador();
+			static void salvarPontuacao();
 
 		//Template Method
 		protected:
